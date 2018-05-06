@@ -6,7 +6,8 @@
 	    host : '127.0.0.1',
 	    user : 'postgres',
 	    password : 'pinfodb',
-	    database : 'pinfo'
+	    database : 'pinfo',
+	    port: 5432
 	  }
 	});
  	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, glowimgname, uvimgname, categories } = req.body;
