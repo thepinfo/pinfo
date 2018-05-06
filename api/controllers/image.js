@@ -5,7 +5,7 @@
 	  connection: {
 	    host : '127.0.0.1',
 	    user : 'postgres',
-	    password : '209145',
+	    password : 'pinfodb',
 	    database : 'pinfo'
 	  }
 	});
