@@ -8,7 +8,9 @@ class Register extends React.Component {
       name: '',
       user: '',
       email: '',
-      password: ''      
+      password: '',
+      loading: false,
+      errors: {}      
     }
   }
 
