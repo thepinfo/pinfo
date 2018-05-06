@@ -32,7 +32,7 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = () => {
-      fetch('http://localhost:3000/register', {
+      fetch('http://104.236.62.203:3000/register', {
         method: 'post',
         headers: {'content-Type': 'application/json'},
         body: JSON.stringify({

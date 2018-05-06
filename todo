@@ -4,11 +4,36 @@ Todo:
 ----Form validation
 ----Mine marker for pins
 xxxxpin submission handler to database
-----pin display for my profile and for general search
-----route submit pin back to my submissions
+--xx///pin display for my profile// and for general search
+xxxxroute submit pin back to my submissions
 ----profile display and edit page
 ----Pin edit in my profile
 ----spin up droplet
 ----launch server
 ----launch database
 ----launch app beta
+----terms of service
+
+
+
+----Security of file submission and form handling
+----security of server
+----sharing links/profiles/boards
+----email confirmation
+
+
+
+****$$$*$*$* Future Components *$*$*$$$****
+----Pin search
+----my profile {messaging system, my pinpals, my boards}
+----edit profile(maybe part of my as a button click to make forms editable and show a submit button?)
+----forgot password
+----navigation extensible components for search, artist profiles, categories, my profile
+----make a board
+
+**^*^*$$%% Components in Progress %%$$*^*^**
+&&^^& Submit a Pin &^^&&
+----say something about this pin
+----if no image pass none
+
+

@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
+    fetch('http://104.236.62.203:3000/signin', {
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({

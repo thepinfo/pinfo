@@ -27,7 +27,7 @@ class MyPins extends React.Component {
       }
 
   componentWillMount = (props) => {
-    fetch('http://localhost:3000/mysubmissions', {
+    fetch('http://104.236.62.203:3000/', {
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({
@@ -91,15 +91,15 @@ render() {
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline' key={i}>
                           Name: {row.name}<br />
                           Artist: {row.artist}<br />                          
-                          <img className='cardimg' src={'http://localhost:3000/public/' + row.imgname + '.jpg'} />
+                          <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
                           <br/>
                           {row.glow==='on'
-                            ?<div>Glow<br /><img className='cardimg' src={'http://localhost:3000/public/' + row.glowimgname + '.jpg'} /></div>
+                            ?<div>Glow<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.glowimgname + '.jpg'} /></div>
                             :<div>No Glow</div>
                           }
                           <br/>
                           {row.uv==='on'
-                            ?<div>UV<br /><img className='cardimg' src={'http://localhost:3000/public/' + row.uvimgname + '.jpg'} /></div>                             
+                            ?<div>UV<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.uvimgname + '.jpg'} /></div>                             
                             :<div>No UV</div>                            
                           }       
                           <br />                  

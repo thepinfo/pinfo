@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
-    fetch('http://localhost:3000/image', {
+    fetch('http://104.236.62.203:3000/image', {
         method: 'put',
         headers: {'content-Type': 'application/json'},
         body: JSON.stringify({

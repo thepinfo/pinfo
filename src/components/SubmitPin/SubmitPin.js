@@ -155,7 +155,7 @@ class SubmitPin extends React.Component {
 		console.log(index);
 	}
   /*onButtonSubmit = () => {
-    fetch('http://localhost:3000/image', {
+    fetch('http://104.236.62.203:3000/image', {
         method: 'put',
         headers: {'content-Type': 'application/json'},
         body: JSON.stringify({
@@ -245,7 +245,7 @@ class SubmitPin extends React.Component {
     if(file == null){
     	alert('An image is required');
     }else{
-    	fetch('http://localhost:3000/image', {
+    	fetch('http://104.236.62.203:3000/image', {
         method: 'put',
         headers : { 
         'Content-Type': 'application/json',
@@ -279,33 +279,33 @@ class SubmitPin extends React.Component {
   		
   		
 
-	    fetch('http://localhost:3000/upload', {
+	    fetch('http://104.236.62.203:3000/upload', {
 	      method: 'POST',
 	      body: data,
 	    }).then((response) => {
 	      response.json().then((body) => {
-	        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+	        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
 	      });
 	    });
 
 	    if(glowfile != null){
-	    	fetch('http://localhost:3000/upload', {
+	    	fetch('http://104.236.62.203:3000/upload', {
 		      method: 'POST',
 		      body: glowdata,
 		    }).then((response) => {
 		      response.json().then((body) => {
-		        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+		        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
 		      });
 		    });
 	    }
 
 	    if(uvfile != null){
-	    	fetch('http://localhost:3000/upload', {
+	    	fetch('http://104.236.62.203:3000/upload', {
 		      method: 'POST',
 		      body: uvdata,
 		    }).then((response) => {
 		      response.json().then((body) => {
-		        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+		        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
 		      });
 		    });
 	    }
@@ -316,12 +316,12 @@ class SubmitPin extends React.Component {
     	console.log("data",data);
    		data.append('file', this.state.file);
     	data.append('filename', this.state.file.name);
-    	fetch('http://localhost:3000/upload', {
+    	fetch('http://104.236.62.203:3000/upload', {
 	      method: 'POST',
 	      body: data,
 	    }).then((response) => {
 	      response.json().then((body) => {
-	        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+	        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
 	      });
 	    });
 	  
