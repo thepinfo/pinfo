@@ -8,10 +8,18 @@
     .logo-div {
 
 	}
+	.logo-img {
+		height: 150;
+		 width: 150;
+	}
 }
 
 @media screen and (max-width: 479px) {
 	.logo-div {
-		max-width: 20%;
+		
+	}
+	.logo-img {
+		height: 30;
+		 width: 30;
 	}
 }
