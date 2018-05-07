@@ -73,7 +73,7 @@
 
 const pool = new pg.Pool({
     port: 5432,
-    host : '127.0.0.1',
+    host : '104.236.62.203',
     user : 'postgres',
     password : 'pinfodb',
     database : 'pinfo'
