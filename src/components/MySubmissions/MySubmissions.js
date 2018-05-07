@@ -27,7 +27,7 @@ class MyPins extends React.Component {
       }
 
   componentWillMount = (props) => {
-    fetch('http://104.236.62.203:3000/', {
+    fetch('http://104.236.62.203:3000/mysubmissions', {
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({
