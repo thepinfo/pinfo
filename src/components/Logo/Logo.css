@@ -16,7 +16,8 @@
 
 @media screen and (max-width: 479px) {
 	.logo-div {
-		
+		height: 30;
+		 width: 30;
 	}
 	.logoimg {
 		height: 30;
