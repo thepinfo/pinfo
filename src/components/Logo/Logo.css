@@ -9,18 +9,18 @@
 
 	}
 	.logoimg {
-		height: 150;
-		 width: 150;
+		height: 150px;
+		 width: 150px;
 	}
 }
 
 @media screen and (max-width: 479px) {
 	.logo-div {
-		height: 30;
-		 width: 30;
+		height: 30%;
+		 width: 30%;
 	}
 	.logoimg {
-		height: 30;
-		 width: 30;
+		height: 30%;
+		 width: 30%;
 	}
 }
