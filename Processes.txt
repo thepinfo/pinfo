@@ -1,0 +1,16 @@
+Processes:
+
+Update to Server
+on local:
+git add . 
+git commit -m "message" 
+git push origin master 
+
+on server:
+sudo reboot
+git pull
+npm run build if front end changes
+pm2 serve build
+cd api
+npm start
+
