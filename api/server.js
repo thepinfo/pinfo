@@ -23,6 +23,9 @@ const db = knex({
   }
 });
 
+knex.raw('select 1+1 as result').then(function () {
+    console.log('there is a valid connection in the pool')
+  });
 
 
 
