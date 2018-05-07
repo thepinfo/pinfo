@@ -16,16 +16,12 @@ const mysubmissions = require('./controllers/mysubmissions');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '104.236.62.203',
+    host : '127.0.0.1',
     user : 'pinfo',
     password : 'pinfodb',
     database : 'pinfo'
   }
 });
-
-knex.raw('select 1+1 as result').then(function () {
-    console.log('there is a valid connection in the pool')
-  });
 
 
 

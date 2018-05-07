@@ -10,6 +10,7 @@
 	  }
 	});
  	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, glowimgname, uvimgname, categories } = req.body;
+ 	
  	/*const { email, name, password } = req.body;
 	if (!email || !name || !password) {
 		return res.status(400).json('Invalid form submission');
