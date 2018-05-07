@@ -64,7 +64,7 @@ render() {
   const { loaded, rows } = this.state;
         return (
           <div className='css-table'>
-            {<div className='f2'>My Pin Submissions</div>}
+            {<div className='f2 pa2'>My Pin Submissions</div>}
             {/*loaded==='true' 
               ? <div className='f2'>My Submissions</div>                             
               : console.log("state:", this.state)*/

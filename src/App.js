@@ -146,7 +146,7 @@ class App extends Component {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         </div>
         {route==='home' 
-          ? <div> <MySubmissions user={this.state.user} />
+          ? <div className='contentdiv'> <MySubmissions user={this.state.user} />
           {console.log(this.state.isSignedIn)}
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
