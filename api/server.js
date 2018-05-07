@@ -17,7 +17,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host : '104.236.62.203',
-    user : 'postgres',
+    user : 'pinfo',
     password : 'pinfodb',
     database : 'pinfo',
     port: 5432
