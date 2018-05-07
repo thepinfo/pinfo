@@ -22,5 +22,6 @@
 	.logoimg {
 		height: 80px;
 		 width: 80px;
+		 float: left;
 	}
 }
