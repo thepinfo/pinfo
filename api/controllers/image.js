@@ -6,9 +6,7 @@
 	    host : '104.236.62.203',
 	    user : 'pinfo',
 	    password : 'pinfodb',
-	    database : 'pinfo',
-	    port: 5432
-	  }
+	    database : 'pinfo'
 	});
  	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, glowimgname, uvimgname, categories } = req.body;
  	/*const { email, name, password } = req.body;

@@ -19,8 +19,7 @@ const db = knex({
     host : '104.236.62.203',
     user : 'pinfo',
     password : 'pinfodb',
-    database : 'pinfo',
-    port: 5432
+    database : 'pinfo'
   }
 });
 
