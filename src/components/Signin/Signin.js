@@ -54,15 +54,15 @@ class Signin extends React.Component {
                   <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                   <input onChange={this.onPasswordChange} className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
                 </div>
-                <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" /> Remember me</label>
+                {/*<label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" /> Remember me</label>*/}
               </fieldset>
               <div className="">
                 <input onClick={this.onSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" />
               </div>
-              <div className="lh-copy mt3">
+              {/*<div className="lh-copy mt3">
                 <p onClick={() => onRouteChange('Register')} href="#0" className="f6 link dim black db pointer">Register</p>
                 <p href="#0" className="f6 link dim black db pointer">Forgot your password?</p>
-              </div>
+              </div>*/}
             </div>
           </main>
       </article>
