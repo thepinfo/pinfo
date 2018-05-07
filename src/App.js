@@ -142,7 +142,7 @@ class App extends Component {
             params={particlesOptions}
         />*/}
         <div className='top'>
-          <Logo />  
+          {/*<Logo /> */} 
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         </div>
         {route==='home' 

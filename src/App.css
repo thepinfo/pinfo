@@ -32,9 +32,16 @@
   z-index: -1;
 }
 
+.top {
+  margin-bottom: 20px;
+  height: 100px;
+}
 
+header {
+  height:100px;
+}
 
-@media screen and (min-width: 480px) {    
+/*@media screen and (min-width: 480px) {    
     .top {
       margin: 30px 0;
       font-weight: bold;
@@ -42,7 +49,7 @@
       flex-direction: row;
       justify-content: space-between;
     }
-}
+}*/
 
 @media screen and (max-width: 479px) {
 }

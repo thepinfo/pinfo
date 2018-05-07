@@ -3,7 +3,7 @@
 }
 
 
-
+/*
 @media screen and (min-width: 480px) {    
     .logodiv {
 
@@ -12,9 +12,9 @@
 		height: 150px;
 		 width: 150px;
 	}
-}
+}*/
 
-@media screen and (max-width: 479px) {
+/*@media screen and (max-width: 479px) {
 	.logodiv {
 		height: 108px;
 		 width: 108px;
@@ -24,4 +24,4 @@
 		 width: 80px;
 		 float: left;
 	}
-}
+}*/
