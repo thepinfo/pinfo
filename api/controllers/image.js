@@ -7,6 +7,7 @@
 	    user : 'pinfo',
 	    password : 'pinfodb',
 	    database : 'pinfo'
+	  }
 	});
  	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, glowimgname, uvimgname, categories } = req.body;
  	/*const { email, name, password } = req.body;
