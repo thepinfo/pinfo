@@ -6,7 +6,7 @@ import './Logo.css';
 
 const Logo = () => {
 	  return (
-	  	    <div className='ma4 mt0 logodiv'>
+	  	    <div>
   	                <img className='logoimg' alt='logo' src={brain}/>
             </div>
 	  	);

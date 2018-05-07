@@ -16,11 +16,11 @@
 
 @media screen and (max-width: 479px) {
 	.logodiv {
-		height: 30%;
-		 width: 30%;
+		height: 108px;
+		 width: 108px;
 	}
 	.logoimg {
-		height: 100%;
-		 width: 100%;
+		height: 80px;
+		 width: 80px;
 	}
 }
