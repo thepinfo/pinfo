@@ -70,14 +70,19 @@ render() {
                           Artist: {row.artist}<br />                          
                           <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
                           <br/>
+                          {row.backimgname != null
+                            ?<div>Back<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.backimgname + '.jpg'} /></div>
+                            :<div></div>
+                          }
+                          <br/>
                           {row.glow==='on'
                             ?<div>Glow<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.glowimgname + '.jpg'} /></div>
-                            :<div>No Glow</div>
+                            :<div></div>
                           }
                           <br/>
                           {row.uv==='on'
                             ?<div>UV<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.uvimgname + '.jpg'} /></div>                             
-                            :<div>No UV</div>                            
+                            :<div></div>                            
                           }       
                           <br />                  
                           </div>;

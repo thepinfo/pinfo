@@ -17,6 +17,7 @@ class SubmitPin extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      route: 'form',
       name: '',
       artist: '',
       producer: '',
@@ -163,7 +164,18 @@ class SubmitPin extends React.Component {
 	}
 
 
+onSubmitClick = () => {
+    console.log('route')
+    /*if (route === 'signout') {
+      this.setState(initialState)
+    } else if (route === 'home') {
+      this.setState({isSignedIn: true})
+    } else if (route === 'submitpin') {
+      this.setState({isSignedIn: true})
+    }*/
 
+    this.setState({route: 'confirm'})    
+  }
 
   onSubmitPin = () => {  	
   	//ASK IF THIS IS CORRECT AND THEN SUBMIT IMAGE/DATA TO THE DATABASE
@@ -293,8 +305,10 @@ class SubmitPin extends React.Component {
 
   render() {
   	const { onRouteChange } = this.props;
-  	return (
-  		<div className='br3 ba b--black-10 mv4 mw-100 shadow-5 center divblock'>
+  	const { route } = this.state;
+  	return (<div className='contentdiv'>
+  		{route==='form'
+  		?<div className='br3 ba b--black-10 mv4 mw-100 shadow-5 center divblock'>
 			
 			<table className="ba b--transparent ph0 mh0 black-80 v-top">
 			<tbody>
@@ -425,7 +439,146 @@ class SubmitPin extends React.Component {
         	</table>
         	
 		</div>
-		
+		:<div></div>
+	}
+	{route==='confirm'
+  		?<div className='br3 ba b--black-10 mv4 mw-100 shadow-5 center divblock'>
+			
+			<table className="ba b--transparent ph0 mh0 black-80 v-top">
+			<tbody>
+			
+				<tr>
+					<td>
+						<div className="f3 fw6 ph0 mh0">Confirm Pin</div>
+					</td>
+				</tr>
+				<tr>
+					<td className="td-70">
+				            
+				              <div className="">
+				                <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+				                {this.state.name}
+				              </div>
+				              <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="artist">Artist</label>
+				                {this.state.artist}
+				              </div>
+				              <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="producer">Producer</label>
+				                {this.state.producer}
+				              </div>
+				              <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
+				                {this.state.year}
+				              </div>
+				              <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="variant">Variant/Colorway</label>
+				                {this.state.variant}
+				              </div>
+				              <div className="mt3"> 
+				                <label className="db fw6 lh-copy f6" htmlFor="about">About</label>
+		        				{this.state.about}
+		        			  </div>
+				              <div className="mt3 center">
+				              	<table className='center pintable'>
+				              		<tbody>
+				              			<tr>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Pin #</label>
+				              				</td>
+				              				<td align='center'> 
+				              					<label className="db fw6 lh-copy f6" htmlFor="maxno">Max #</label>
+				              				</td>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="open">Open #</label>
+				              				</td>
+			              				</tr>
+			              				<tr>
+			              					<td align='center'>
+			              						{this.state.pinno}
+				              				</td>
+				              				<td align='center'>
+				              					{this.state.maxno}
+				              				</td>
+				              				<td align='center'>
+							              		{this.state.open === 'on'
+							              			?'Open'
+							              			:'Not open'
+							              		}
+							              	</td>
+			              				</tr>
+						              	<tr>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="glow">Glow</label>
+							              	</td>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="uv">UV</label>
+							              	</td>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="uv">Mod</label>
+							              	</td>
+						              	</tr>
+						              	<tr>
+							              	<td align='center'>
+							              		<input onChange={this.onGlowChange} className="" type="checkbox" name="glow"  id="glow" />
+							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onUvChange} className="" type="checkbox" name="uv"  id="uv" />
+							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onModChange} className="" type="checkbox" name="mod"  id="mod" />
+							              	</td>
+						              	</tr>
+					              	</tbody>
+					              	</table>				                
+					              </div>
+
+		                			
+		            		 				           
+				        </td>				       
+	        	</tr>
+	        	<tr>
+	        		<td>		                  		
+		                		{/*	<label className='db fw6 lh-copy f6'>Image of Pin</label>
+		                			<div className='ba'>
+		                			<FileUpload sendData={this.getImgData} />
+		                			</div>
+		                			<div id='backimg'>
+		                				<label className='db fw6 lh-copy f6'>Image of Back</label>
+			                			<div className='ba' >
+			                				<FileUpload sendData={this.getBackImgData} />
+			                			</div>
+		                			</div>
+		                			<div id='glowimg' style={{display: 'none'}}>
+		                				<label className='db fw6 lh-copy f6'>Image of Glow</label>
+			                			<div className='ba' >
+			                				<FileUpload sendData={this.getGlowImgData} />
+			                			</div>
+		                			</div>
+		                			<div id='uvimg' style={{display: 'none'}}>
+			                			<label className='db fw6 lh-copy f6'>Image of UV</label>
+			                			<div className='ba'>
+			                				<FileUpload sendData={this.getUvImgData} />
+			                			</div>
+		                			</div>
+		                	
+		                <List sendData={this.getListData} action={this.tagHandler} items={this.state.categories} />	*/}		
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<td>	        			
+	        			<div className="">
+			                <input onClick={this.onSubmitClick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />
+			            </div>	
+		            </td>
+	            </tr>	
+        	</tbody>
+        	</table>
+        	
+		</div>
+  		:<div />
+  	}
+	</div>
   	);
   }
 }
