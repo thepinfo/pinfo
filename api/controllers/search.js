@@ -1,8 +1,8 @@
  const handleSearch = (req, res) => {
  	const pg = require('pg');
 
- 	const { userid } = req.body;
- 	console.log('userid',userid);
+ 	/*const { userid } = req.body;
+ 	console.log('userid',userid);*/
 
 
 const pool = new pg.Pool({
@@ -13,18 +13,18 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT * from pins WHERE mine = $2';
-const values = [userid,'on'];
+/*const text = 'SELECT * from pins WHERE userid <> $1 and mine = $2';
+const values = [1,'on'];*/
 
 pool.connect((err, db, done) => {
   if(err) {
     return console.log(err);
   } else {
-    db.query(text,values, (err, table) => {
+    db.query('SELECT * from pins', (err, table) => {
       if(err) {
         return console.log(err)      
       }else{
-      	console.log(text,values)
+      	console.log(text)
         console.log(table)
         return res.json(table)
       }

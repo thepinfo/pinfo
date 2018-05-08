@@ -16,7 +16,7 @@ class Search extends React.Component {
     this.componentWillMount = this.componentWillMount.bind(this);
   }
 
-  /*getInitialState = () => {
+  getInitialState = () => {
     return {
       jobs: []
     }
@@ -26,9 +26,11 @@ class Search extends React.Component {
         this.setState({
           rows: body.rows
         });
-      }*/
+      }
+
 
   componentWillMount = (props) => {
+  	console.log("User: ",this.props.user.id);
     fetch('http://104.236.62.203:3000/search', {
       method: 'post',
       headers: {'content-Type': 'application/json'},
@@ -57,7 +59,7 @@ render() {
   const { loaded, rows } = this.state;
         return (
           <div className='css-table'>
-            {<div className='f2 pa2'>All Pins</div>}         
+            {<div className='f2 pa2'>All Submissions</div>}         
 
               <div className='equalHMRWrap eqWrap'>
                 { this.state.loaded &&                                     
