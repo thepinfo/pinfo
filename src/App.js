@@ -9,6 +9,7 @@ import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import MySubmissions from './components/MySubmissions/MySubmissions';
 import MyProfile from './components/MyProfile/MyProfile';
+import Search from './components/Search/Search';
 //import Stats from './components/Stats/Stats';
 import './App.css';
 
@@ -226,6 +227,22 @@ class App extends Component {
         {route==='myprofile' 
           ? <div>
               <MyProfile user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='search' 
+          ? <div>
+              <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />
               <FaceRecognition />

@@ -14,7 +14,10 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 						<ul>
 							<li><p onClick={() => onRouteChange('home')} className='f3 link dim black pointer current'>Home</p></li>
 							<li><p onClick={() => onRouteChange('submitpin')} className='f3 link dim black pointer'>Submit Pin</p></li>
-							<li><p onClick={() => onRouteChange('myprofile')} className='f3 link dim black pointer'>My Profile</p></li>					
+							<li><p onClick={() => onRouteChange('myprofile')} className='f3 link dim black pointer'>My Profile</p></li>
+							<li><p onClick={() => onRouteChange('search')} className='f3 link dim black pointer'>**Search**</p></li>
+							<li><p onClick={() => onRouteChange('artists')} className='f3 link dim black pointer'>**Artists**</p></li>
+							<li><p className='f3'>** means WIP</p></li>					
 							<li><p onClick={() => onRouteChange('signout')} className='f3 pb2 link dim black pointer'>Sign Out</p></li>					
 						</ul>
 					</nav>

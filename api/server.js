@@ -13,6 +13,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const mysubmissions = require('./controllers/mysubmissions');
 const myprofile = require('./controllers/myprofile');
+const search = require('./controllers/search');
 
 const db = knex({
   client: 'pg',
@@ -41,6 +42,8 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
 app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, db) })
+
+app.post('/search', (req, res) => { search.handleSearch(req, res, db) })
 
 app.post('/myprofile', (req, res) => { myprofile.handleMyProfile(req, res, db) })
 
