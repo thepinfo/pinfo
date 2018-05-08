@@ -343,9 +343,9 @@ class SubmitPin extends React.Component {
   render() {
   	const { onRouteChange } = this.props;
   	return (
-  		<div className='br3 ba b--black-10 mv4 w-100 w-50-m w-70-l mw6 shadow-5 center'>
+  		<div className='br3 ba b--black-10 mv4 mw-100 shadow-5 center divblock'>
 			
-			<table className="ba b--transparent ph0 mh0 black-80 ml4 v-top">
+			<table className="ba b--transparent ph0 mh0 black-80 v-top">
 			<tbody>
 			
 				<tr>

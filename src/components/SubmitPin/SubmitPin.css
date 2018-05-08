@@ -10,9 +10,26 @@
   background-size:40px 60px;
 }
 
+.divblock {
+  display:block;
+}
+
+/*label {
+  display:block;
+  width:100%;
+  max-width: 100%;
+}*/
+
 table {
 	white-space: nowrap;
   table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+tbody, tr {
+  width: 100%;
+  max-width: 100%;
 }
 
 .td-70 {

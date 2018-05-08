@@ -63,8 +63,8 @@ render() {
     });*/
   const { loaded, rows } = this.state;
         return (
-          <div className='css-table'>
-            {<div className='f2 pa2'>My Profile</div>}
+          <div className='contentdiv'>
+            
             {/*loaded==='true' 
               ? <div className='f2'>My Submissions</div>                             
               : console.log("state:", this.state)*/
@@ -85,24 +85,16 @@ render() {
 
 
                       w-60-ns w-18-m w-18-l w-60 
-                      */                      
+                      */
+                                            
                       rows.map((row, i) => {
                         console.log('row',row)
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline' key={i}>
+                          return <div className='br3 ba b--black-10 w-100 w-50-m w-25-l shadow-5 center' key={i}>
+                          <div><label className="f4 fw6 ph0 mh0">My Profile</label><br />
                           Name: {row.name}<br />
-                          Artist: {row.artist}<br />                          
-                          <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
-                          <br/>
-                          {row.glow==='on'
-                            ?<div>Glow<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.glowimgname + '.jpg'} /></div>
-                            :<div>No Glow</div>
-                          }
-                          <br/>
-                          {row.uv==='on'
-                            ?<div>UV<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.uvimgname + '.jpg'} /></div>                             
-                            :<div>No UV</div>                            
-                          }       
-                          <br />                  
+                          Email: {row.email}<br />
+                          Entries: {row.entries}<br />                          
+                          <br /></div>                  
                           </div>;
                       })
 

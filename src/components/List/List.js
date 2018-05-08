@@ -84,7 +84,7 @@ class List extends Component {
                 <input type="radio" value="character" checked={this.state.selectedOption === 'character'} onChange={this.handleOptionChange} />
                 Character
               </label>
-            </div>
+            </div><br />
             <div className="radio ib tagborder">
               <label>
                 <input type="radio" value="musical" checked={this.state.selectedOption === 'musical'} onChange={this.handleOptionChange} />
