@@ -24,7 +24,7 @@ pool.connect((err, db, done) => {
       if(err) {
         return console.log(err)      
       }else{
-      	console.log(text)
+      	//console.log(text)
         console.log(table)
         return res.json(table)
       }
