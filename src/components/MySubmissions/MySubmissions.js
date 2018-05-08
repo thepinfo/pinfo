@@ -93,6 +93,12 @@ render() {
                           Artist: {row.artist}<br />                          
                           <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
                           <br/>
+                          { var back = row.backimgname;
+                            back.length > 1
+                            ?<div>Back<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.backimgname + '.jpg'} /></div>
+                            :<div>No Back</div>
+                          }
+                          <br/>
                           {row.glow==='on'
                             ?<div>Glow<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.glowimgname + '.jpg'} /></div>
                             :<div>No Glow</div>
