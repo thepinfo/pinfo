@@ -167,12 +167,12 @@ class App extends Component {
             </div>
           : (
               route === 'Signin' 
-              ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              ? <div  className='contentdiv'><Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} /></div>
               : <div />
             )
         }
         {route==='submitpin' 
-          ? <div>
+          ? <div className='submitdiv center'>
               <SubmitPin
                 user={this.state.user}
                 onInputChange={this.onInputChange} 
@@ -193,7 +193,7 @@ class App extends Component {
             )
         }
         {route==='signout' 
-          ? <div>
+          ? <div className='contentdiv'>
               <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />
@@ -209,7 +209,7 @@ class App extends Component {
             )
         }
         {route==='register' 
-          ? <div>
+          ? <div className='contentdiv'>
               <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />
@@ -225,7 +225,7 @@ class App extends Component {
             )
         }
         {route==='myprofile' 
-          ? <div>
+          ? <div className='contentdiv'>
               <MyProfile user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />
@@ -241,7 +241,7 @@ class App extends Component {
             )
         }
         {route==='search' 
-          ? <div>
+          ? <div className='contentdiv'>
               <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />

@@ -9,7 +9,7 @@
 	    database : 'pinfo'
 	  }
 	});
- 	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, glowimgname, uvimgname, categories } = req.body;
+ 	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories } = req.body;
  	
  	/*const { email, name, password } = req.body;
 	if (!email || !name || !password) {
@@ -40,6 +40,7 @@
 				about: about,
 				userid: userid,
 				imgname: imgname,
+				backimgname: backimgname,
 				glowimgname: glowimgname,
 				uvimgname: uvimgname
 				//loc: file,

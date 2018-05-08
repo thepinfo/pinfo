@@ -6,28 +6,9 @@ class FileUpload extends React.Component {
 
     this.state = {
       file:'',imagePreviewURL: '',
-    };
-
-    //this.handleUploadImage = this.handleUploadImage.bind(this);
+    };    
   }
-
-  /*handleUploadImage(ev) {
-  	console.log("File: ",)
-    ev.preventDefault();
-
-    const data = new FormData();
-    data.append('file', file);
-    data.append('filename', file.name);
-
-    fetch('http://localhost:3000/upload', {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
-      });
-    });
-  }*/
+  
 
   changePreview = (event) => { 
        console.log('event',this.uploadInput.files[0])
@@ -60,18 +41,10 @@ class FileUpload extends React.Component {
       <form onSubmit={this.handleUploadImage}>
         <div>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.changePreview.bind(this)} />
-        </div>
-        {/*<div>
-          <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-        </div>
-        <br />
-        <div>
-          <button>Upload</button>
-        </div>*/}
+        </div>        
         <div className="imgPreview">
           {$imagePreview}
         </div>
-        {/*<img src={this.state.imageURL} alt="img" />*/}
       </form>
     );
   }

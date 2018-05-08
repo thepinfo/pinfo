@@ -63,7 +63,7 @@ render() {
     });*/
   const { loaded, rows } = this.state;
         return (
-          <div className='contentdiv'>
+          <div>
             
             {/*loaded==='true' 
               ? <div className='f2'>My Submissions</div>                             

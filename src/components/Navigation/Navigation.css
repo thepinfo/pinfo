@@ -8,6 +8,7 @@ body {
   font-family: Helvetica Neue, Helvetica, Arial;
   /*background: #f9f9f9;
   color: #555;*/
+
 }
 
 a {
@@ -39,6 +40,7 @@ header {
   top: 0;
   left: 0;
   /*border-bottom: 4px solid #4C9CF1;*/
+  background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
   z-index: 100;
 
 }

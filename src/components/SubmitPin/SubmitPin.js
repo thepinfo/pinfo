@@ -8,6 +8,7 @@ import 'react-images-uploader/font.css';
 var categories = {};
 var tagtype = {};
 var file = null;
+var backfile = null;
 var glowfile = null;
 var uvfile = null;
 
@@ -29,48 +30,19 @@ class SubmitPin extends React.Component {
       categories: [],
       tagtype: '',
       file: '',
+      backfile: '',
       glowfile: '',
       uvfile: '',
       imageURL:''
     }
     this.getListData = this.getListData.bind(this);
     this.getImgData = this.getImgData.bind(this);
+    this.getBackImgData = this.getBackImgData.bind(this);
     this.getGlowImgData = this.getGlowImgData.bind(this);
     this.getUvImgData = this.getUvImgData.bind(this);    
     console.log('User:',this.props.user);    
-    //this.onDrop = this.onDrop.bind(this);
-    //this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
-
-  /*handleUploadImage(ev) {
-    ev.preventDefault();
-
-    const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.fileName.value);
-
-    fetch('http://localhost:8000/upload', {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:8000/${body.file}` });
-      });
-    });
-  }*/
-  /*tagHandler() {
-  	console.log("ok", this.state.items)
-  	let categoriesNow = List();
-  	console.log(categoriesNow);
-  	this.setState({
-  		categories: this.state.items
-  	});
-  }*/
-
-  /*onInputChange = (event) => {
-    this.setState({input: event.target.value});
-  }*/
 
   onNameChange = (event) => {
     this.setState({name: event.target.value})
@@ -127,12 +99,7 @@ class SubmitPin extends React.Component {
     this.setState({tag: event.target.value})
   }//deprecated?
 
-	/*onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
-    }*/
-
+	
   onAddTag = (event) => {
     event.preventDefault();
     this.setState({
@@ -142,32 +109,11 @@ class SubmitPin extends React.Component {
     console.log('logging categores',this.state.categories)
   }
 
-  /*onDeleteTag = () => {
-  	//set state of categories so that the one corresponding to the index of  clicked is removed
-  }*/
-	/*_handleDelete(id){
-	    this.setState(prevState => ({
-	        data: prevState.data.filter(el => el != id )
-	    }));
-	}*/
-
+  
 	clicked = (index) => {
 		console.log(index);
 	}
-  /*onButtonSubmit = () => {
-    fetch('http://104.236.62.203:3000/image', {
-        method: 'put',
-        headers: {'content-Type': 'application/json'},
-        body: JSON.stringify({
-          userid: this.state.user.id,
-          username: this.state.user.name
-        })
-    })
-      .then(response => response.json())
-      .then(count => {
-        this.setState(Object.assign(this.state.user, { entries: count}))
-      })
-  }*/
+  
 	getListData(val){
 		// do not forget to bind getData in constructor
 		console.log(val);
@@ -183,6 +129,16 @@ class SubmitPin extends React.Component {
 	    console.log("Image: ", file);
     	this.setState({
         	file: file
+        });   
+	}
+
+	getBackImgData(val){
+	    // do not forget to bind getData in constructor
+	    //console.log(val);
+	    backfile = val;    
+	    console.log("Image: ", backfile);
+    	this.setState({
+        	backfile: backfile
         });   
 	}
 
@@ -220,6 +176,12 @@ class SubmitPin extends React.Component {
 	    data.append('file', file);
 	    data.append('filename', name);
 
+  		const backname = this.props.user.id + '-back-' + now;
+  		console.log('backname: ',backname);
+  		const backdata = new FormData();
+	    backdata.append('file', backfile);
+	    backdata.append('filename', backname);
+
 	    const glowname = this.props.user.id + '-glow-' + now;
   		console.log('glowname: ',glowname);
   		const glowdata = new FormData();
@@ -237,6 +199,7 @@ class SubmitPin extends React.Component {
         	categories: categories.val,
         	tagtype: tagtype.val,
         	file: file,
+        	backfile: backfile,
         	glowfile: glowfile,
         	uvfile: uvfile
         });     	
@@ -265,6 +228,7 @@ class SubmitPin extends React.Component {
           about: this.state.about,
           userid: this.props.user.id,
           imgname: name,
+          backimgname: backname,
           glowimgname: glowname,
           uvimgname: uvname
           //categories: this.state.categories,
@@ -287,6 +251,17 @@ class SubmitPin extends React.Component {
 	        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
 	      });
 	    });
+
+	    if(backfile != null){
+	    	fetch('http://104.236.62.203:3000/upload', {
+		      method: 'POST',
+		      body: backdata,
+		    }).then((response) => {
+		      response.json().then((body) => {
+		        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
+		      });
+		    });
+	    }
 
 	    if(glowfile != null){
 	    	fetch('http://104.236.62.203:3000/upload', {
@@ -312,33 +287,9 @@ class SubmitPin extends React.Component {
 	    this.props.onRouteChange('home');
     	console.log('State: ', this.state);
     }	
-    	/*const data = new FormData();
-    	console.log("data",data);
-   		data.append('file', this.state.file);
-    	data.append('filename', this.state.file.name);
-    	fetch('http://104.236.62.203:3000/upload', {
-	      method: 'POST',
-	      body: data,
-	    }).then((response) => {
-	      response.json().then((body) => {
-	        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
-	      });
-	    });
-	  
-    	*/
-    }
+    	
+  }
 
-    
-
-
-
-/*changeButtonState(event) {
-	console.log(this.state);
-	let test = Object.assign({}, this.state.items);
-	console.log(test)
-
-    this.setState({categories: [...test]})
-} */
 
   render() {
   	const { onRouteChange } = this.props;
@@ -436,11 +387,16 @@ class SubmitPin extends React.Component {
 				        </td>				       
 	        	</tr>
 	        	<tr>
-	        		<td>		  
-                		{/*<ImageUpload onChange={this.fileChangedHandler} sendData={this.getImgData}/>*/}
+	        		<td>		                  		
 		                			<label className='db fw6 lh-copy f6'>Image of Pin</label>
 		                			<div className='ba'>
 		                			<FileUpload sendData={this.getImgData} />
+		                			</div>
+		                			<div id='backimg'>
+		                				<label className='db fw6 lh-copy f6'>Image of Back</label>
+			                			<div className='ba' >
+			                				<FileUpload sendData={this.getBackImgData} />
+			                			</div>
 		                			</div>
 		                			<div id='glowimg' style={{display: 'none'}}>
 		                				<label className='db fw6 lh-copy f6'>Image of Glow</label>
@@ -477,59 +433,3 @@ class SubmitPin extends React.Component {
 
 
 export default SubmitPin;
-
-
-
-
-
-/*import React from 'react';
-import './SubmitPin.css';
-
-const SubmitPin = ({ onInputChange, onButtonSubmit }) => {
-
-	constructor(props){
-    super();
-    this.state = {
-      name: '',
-      user: '',
-      email: '',
-      password: ''      
-    }
-  }
-
-	  return (
-  	    	<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-	    	<main className="pa4 black-80">
-          <div className="measure">
-            <div id="sign_up" className="ba b--transparent ph0 mh0">
-              <div className="f4 fw6 ph0 mh0 white">Submit a pin</div>
-              <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
-                <input onChange={this.onNameChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name" />
-              </div>
-              <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="user">User Name</label>
-                <input onChange={this.onUserChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="user"  id="user" />
-              </div>
-              <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="email">Email</label>
-                <input onChange={this.onEmailChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email"  id="email" />
-              </div>
-              <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                <input onChange={this.onPasswordChange} className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
-              </div>
-            </div>
-            <div className="">
-              	<input className='f4 pa2 w-70 center' type='text' onChange={onInputChange}/>
-	    		<button onClick={onButtonSubmit}>Submit</button>
-            </div>
-          </div>
-        </main>
-		</article>
-	  	);
-	}
-
-
-export default SubmitPin;*/
-
