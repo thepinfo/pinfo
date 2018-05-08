@@ -12,6 +12,7 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const mysubmissions = require('./controllers/mysubmissions');
+const myprofile = require('./controllers/myprofile');
 
 const db = knex({
   client: 'pg',
@@ -40,6 +41,8 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
 app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, db) })
+
+app.post('/myprofile', (req, res) => { myprofile.handleMyProfile(req, res, db) })
 
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
 

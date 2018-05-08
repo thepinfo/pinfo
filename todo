@@ -8,10 +8,10 @@ xxxxpin submission handler to database
 xxxxroute submit pin back to my submissions
 ----profile display and edit page
 ----Pin edit in my profile
-----spin up droplet
-----launch server
-----launch database
-----launch app beta
+xxxxspin up droplet
+xxxxlaunch server
+xxxxlaunch database
+xxxxlaunch app beta
 ----terms of service
 
 
@@ -33,7 +33,9 @@ xxxxroute submit pin back to my submissions
 
 **^*^*$$%% Components in Progress %%$$*^*^**
 &&^^& Submit a Pin &^^&&
-----say something about this pin
+xxxxsay something about this pin
 ----if no image pass none
 
+
+FIX MOBILE JANKINESS
 

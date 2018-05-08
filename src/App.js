@@ -8,6 +8,7 @@ import SubmitPin from './components/SubmitPin/SubmitPin';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import MySubmissions from './components/MySubmissions/MySubmissions';
+import MyProfile from './components/MyProfile/MyProfile';
 //import Stats from './components/Stats/Stats';
 import './App.css';
 
@@ -64,9 +65,7 @@ class App extends Component {
         email: data.email,
         entries: data.entries,
         joined: data.joined
-    },
-    width: 800,
-    height: 182})
+    }})
   }
   /*componentDidMount() {
     fetch('http://localhost:3000')
@@ -106,33 +105,7 @@ class App extends Component {
   }
 
 
-  /**
-   * Calculate & Update state of new dimensions
-   */
-  updateDimensions() {
-    if(window.innerWidth < 500) {
-      this.setState({ width: 450, height: 102 });
-    } else {
-      let update_width  = window.innerWidth-100;
-      let update_height = Math.round(update_width/4.4);
-      this.setState({ width: update_width, height: update_height });
-    }
-  }
-
-  /**
-   * Add event listener
-   */
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
-  }
-
-  /**
-   * Remove event listener
-   */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
-  }
+  
 
   render() {
     const { isSignedIn, route } = this.state;
@@ -209,6 +182,22 @@ class App extends Component {
         {route==='register' 
           ? <div>
               <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='myprofile' 
+          ? <div>
+              <MyProfile user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               
               {/*<DisplayPin imageUrl={imageUrl} />
               <FaceRecognition />
