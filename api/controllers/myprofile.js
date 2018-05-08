@@ -13,7 +13,7 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT * from users WHERE userid = $1 and entries >= $2';
+const text = 'SELECT * from users WHERE id = $1 and entries >= $2';
 const values = [userid, 0];
 console.log(text,values);
 pool.connect((err, db, done) => {
