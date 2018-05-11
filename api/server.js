@@ -84,12 +84,12 @@ app.post('/upload', (req, res, next) => {
   let imageFile = req.files.file;
   //console.log('imageFile: ',imageFile);
   now = Date.now();
-  imageFile.mv(`${__dirname}/public/${req.body.filename}.png`, function(err) {
+  imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
 
-    res.json({file: `public/${req.body.filename}.png`});
+    res.json({file: `public/${req.body.filename}.jpg`});
   });
 
 })
