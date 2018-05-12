@@ -94,7 +94,7 @@ render() {
                           Artist: {row.artist}<br />                          
                           <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
                           <br/>
-                          {row.backimgname != null
+                          {row.backimgname != ''
                             ?<div>Back<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.backimgname + '.jpg'} /></div>
                             :<div></div>
                           }
