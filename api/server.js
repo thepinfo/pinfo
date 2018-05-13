@@ -12,6 +12,7 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const mysubmissions = require('./controllers/mysubmissions');
+const singlepin = require('./controllers/singlepin');
 const myprofile = require('./controllers/myprofile');
 const search = require('./controllers/search');
 
@@ -42,6 +43,8 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
 app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, db) })
+
+app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, db) })
 
 app.post('/search', (req, res) => { search.handleSearch(req, res, db) })
 
