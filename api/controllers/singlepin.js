@@ -13,7 +13,7 @@ const pool = new pg.Pool({
 });
 
 const text = 'SELECT * from pins WHERE id = $1 and mine = $2';
-const values = [pinidid,'on'];
+const values = [pinid,'on'];
 
 pool.connect((err, db, done) => {
   if(err) {
