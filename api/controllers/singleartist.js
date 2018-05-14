@@ -2,7 +2,7 @@
  	const pg = require('pg');
 
  	const { artist } = req.body;
- 	//console.log('userid',userid);
+ 	console.log('artist',artist);
 
 const pool = new pg.Pool({
     port: 5432,
@@ -12,7 +12,7 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT * FROM pins WHERE artist like $1 and mine = $2';
+const text = 'SELECT * FROM pins WHERE artist = $1 and mine = $2';
 const values = [artist,'on'];
 
 pool.connect((err, db, done) => {
