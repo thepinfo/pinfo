@@ -15,6 +15,7 @@ const mysubmissions = require('./controllers/mysubmissions');
 const myprofile = require('./controllers/myprofile');
 const singlepin = require('./controllers/singlepin');
 const allartists = require('./controllers/allartists');
+const singleartist = require('./controllers/singleartist');
 const search = require('./controllers/search');
 
 const db = knex({
@@ -48,6 +49,8 @@ app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req
 app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, db) })
 
 app.post('/allartists', (req, res) => { allartists.handleAllArtists(req, res, db) })
+
+app.post('/singleartist', (req, res) => { singleartist.handleSingleArtist(req, res, db) })
 
 app.post('/search', (req, res) => { search.handleSearch(req, res, db) })
 
