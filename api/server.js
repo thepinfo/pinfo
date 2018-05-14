@@ -12,8 +12,9 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const mysubmissions = require('./controllers/mysubmissions');
-const singlepin = require('./controllers/singlepin');
 const myprofile = require('./controllers/myprofile');
+const singlepin = require('./controllers/singlepin');
+const allartists = require('./controllers/allartists');
 const search = require('./controllers/search');
 
 const db = knex({
@@ -45,6 +46,8 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, db) })
 
 app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, db) })
+
+app.post('/allartists', (req, res) => { allartists.handleAllArtists(req, res, db) })
 
 app.post('/search', (req, res) => { search.handleSearch(req, res, db) })
 
