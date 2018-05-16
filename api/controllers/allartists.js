@@ -12,7 +12,7 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT DISTINCT artist from pins WHERE userid = $1 and mine = $2';
+const text = 'SELECT DISTINCT artist from pins WHERE userid = $1 and mine = $2 and deleted is null';
 const values = [1,'on'];
 
 pool.connect((err, db, done) => {
