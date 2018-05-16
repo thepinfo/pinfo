@@ -79,7 +79,7 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT * from pins WHERE userid = $1 and deleted is null';
+const text = 'SELECT * from pins WHERE userid = $1 and deleted IS NULL';
 const values = [userid,''];
 
 pool.connect((err, db, done) => {
