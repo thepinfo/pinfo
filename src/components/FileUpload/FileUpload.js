@@ -21,6 +21,7 @@ class FileUpload extends React.Component {
       file:'',imagePreviewURL: '',
     };    
   }
+
   
   _crop(){
     function getCanvasBlob(canvas) {
@@ -37,8 +38,8 @@ class FileUpload extends React.Component {
       var that = this;
       // do stuff with blob
       myblob = blob;
-      console.log("Blob type:", myblob.type)
-      console.log("Blob size:", myblob.size)
+      //console.log("Blob type:", myblob.type)
+      //console.log("Blob size:", myblob.size)
       this.setState({
           file: myblob
           //imagePreviewURL: src
@@ -46,7 +47,7 @@ class FileUpload extends React.Component {
 
       this.props.sendData(myblob)
   
-      console.log("Blob state " + this.state); // getting value after the console outside
+      //console.log("Blob state " + this.state); // getting value after the console outside
     }, function(err) {
       console.log(err)
     });
@@ -118,7 +119,7 @@ class FileUpload extends React.Component {
 
         var imageSize =  Math.round(file.size/1024);
 
-          console.log('imageSizeKB', imageSize)
+          //console.log('imageSizeKB', imageSize)
 
         
         if(imageSize > 2000){
@@ -176,7 +177,7 @@ class FileUpload extends React.Component {
            
           })
         }else{
-          console.log('gonna jimp less than 2mb')
+          //console.log('gonna jimp less than 2mb')
           //console.log("rResult",rResult)
           var stripped = rResult.replace(/^data:image\/[a-z]+;base64,/, "");
           //console.log("stripped",stripped)
@@ -256,7 +257,6 @@ class FileUpload extends React.Component {
         guides={true}
         viewMode={3}
         rotatable={true}
-        dragMode={'move'}
         autoCropArea={1}
         checkOrientation={true}
         responsive={true}
