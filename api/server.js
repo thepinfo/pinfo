@@ -17,6 +17,7 @@ const singlepin = require('./controllers/singlepin');
 const allartists = require('./controllers/allartists');
 const singleartist = require('./controllers/singleartist');
 const search = require('./controllers/search');
+const deletepin = require('./controllers/deletepin');
 
 const db = knex({
   client: 'pg',
@@ -59,6 +60,8 @@ app.post('/myprofile', (req, res) => { myprofile.handleMyProfile(req, res, db) }
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
 
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
+
+app.put('/deletepin', (req, res) => { deletePin.handleDeletePin(req, res, db) })
 
 
 
