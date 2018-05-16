@@ -79,8 +79,8 @@ const pool = new pg.Pool({
     database : 'pinfo'
 });
 
-const text = 'SELECT * from pins WHERE userid = $1 and deleted != $2';
-const values = [userid,'on'];
+const text = 'SELECT * from pins WHERE userid = $1 and deleted = $2';
+const values = [userid,''];
 
 pool.connect((err, db, done) => {
   if(err) {
