@@ -61,7 +61,7 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) }
 
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 
-app.put('/deletepin', (req, res) => { deletePin.handleDeletePin(req, res, db) })
+app.put('/deletepin', (req, res) => { deletepin.handleDeletePin(req, res, db) })
 
 
 
