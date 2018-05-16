@@ -16,6 +16,8 @@
 	height: 50;
 }
 
+
+
 /*.cardwrapper {
 	display:block;
 	width:90%;
@@ -55,6 +57,9 @@
 
 @media screen and (min-width: 480px) {    
     .wcontrol {width:18%;}
+    .pincard:hover {
+      transform: scale(1.03,1.03);
+    }
 }
 
 @media screen and (max-width: 479px) {    

@@ -4,6 +4,7 @@ import './List.css';
 
 var categories = {};
 var tagtype = {};
+var doPromise = true;
 
 class List extends Component {
 
@@ -18,15 +19,18 @@ class List extends Component {
     
 
     this.addItem = this.addItem.bind(this);
+    //this.askMom = this.askMom.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
   }
+  
+  
 
   componentWillMount() {
-    console.log("Setting state props.items")
+    //console.log("Setting state props.items")
     this.setState({
       items: this.props.items
     })
-    this.props.sendData(this.state);
+    //this.props.sendData(this.state);
   }
 
   getInitialState(){
@@ -62,10 +66,22 @@ class List extends Component {
     //this.setCatState(val);      
   }
 
-  logData = () => {
+ /* logData = (data) => {
+      console.log('LogData:',data)
+      this.props.sendData(data);
+      
+      //p2.then((res) => console.log("p2:",this.state.items))
+      
+    }//.then sendData*/
+
+    logData = () => {
       console.log('LogData:',this.state)
       this.props.sendData(this.state);
     }
+
+  
+
+    
 
   addItem = (e) => {
     if (this._inputElement.value !== "") {
@@ -83,10 +99,16 @@ class List extends Component {
      
         this._inputElement.value = "";
       }
-      console.log("AddItem Items:",this.state.items)      
+      console.log("AddItem Items:",this.state.items) 
+
+      /*var newPromise = getPromise(this.state.items).then(function(data) {  // Line 1
+        return getPromise(data);  //Line 2
+      }).then(function(data){  //Line 3
+        console.log("newPromise Items:",this.state.items)
+      });     */
       
     e.preventDefault();
-    }
+    }//.then send data?
 
   
   
@@ -102,14 +124,66 @@ class List extends Component {
     this.props.sendData(this.state);
   } 
   
-  
+  promiseData = (e) => {
+    console.log("promiseData")
+    if (this._inputElement.value !== "") {
+                  var newItem = {
+                    tagtype: this.state.selectedOption,
+                    text: this._inputElement.value,
+                    key: Date.now()
+                  };
+
+                  this.setState((prevState) => {
+                    return { 
+                      items: prevState.items.concat(newItem) 
+                      };
+                    });
+                 
+                    this._inputElement.value = "";
+                  }
+  // Promise
+    var setPromise = new Promise(
+        function (resolve, reject) {
+            if (doPromise) {  
+                resolve(newItem); // fulfilled
+            } else {
+                var reason = new Error("error");
+                reject(reason); // reject
+            }
+
+        }
+    )
+
+    var setData = () => {      
+    setPromise
+            .then((fulfilled) => {
+              
+                // yay, you got a new phone
+                console.log("setPromise",this.state.items);
+                this.logData(this.state.items);
+             // output: { brand: 'Samsung', color: 'black' }
+            })
+            .catch(function (error) {
+                // oops, mom don't buy it
+                console.log(error.message);
+             // output: 'mom is not happy'
+            });
+    }
+    setData();
+    e.preventDefault();
+  }
 
   render() {
+
+    
+
+    
+
     return (
 
       <div className="ListMain">
         <div className="header">      
-          <form onSubmit={this.addItem}>
+          <form onSubmit={this.promiseData}>
             <label className="db fw6 lh-copy f6" htmlFor="category">Category Tagging</label>
             <div className="radio ib tagborder">
               <label>
@@ -149,7 +223,7 @@ class List extends Component {
                   placeholder="Enter as many descriptors as you can"
                   className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-75'>
             </input>
-            <button onClick={this.logData} type="submit" >add</button>
+            <button onClick={this.promiseData} type="submit" >add</button>
           </form>
         </div>
         <Items entries={this.state.items}

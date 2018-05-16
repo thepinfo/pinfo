@@ -1,0 +1,10 @@
+@media screen and (min-width: 480px) {    
+    .artistwcontrol {width:45%;}
+    .pincard:hover {
+      transform: scale(1.03,1.03);
+    }
+}
+
+@media screen and (max-width: 479px) {    
+    .artistwcontrol {width:60%;}
+}

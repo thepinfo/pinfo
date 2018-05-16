@@ -1,19 +1,47 @@
 import React from 'react';
+import edit from './pencil.png';
+import del from './delete.png';
 import './MySubmissions.css';
 //var rows = {};
 var rows = [];
 var back = 0;
+
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 console.log("back", back);
 class MyPins extends React.Component {
   constructor(props){
     super();
     this.state = {
       rows: [],
-      loaded: ''    
+      loaded: '',
+      now: '' 
     }
 
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   }
+
+  
 
   getInitialState = () => {
     return {
@@ -55,13 +83,79 @@ class MyPins extends React.Component {
       //this.setState = { loaded: 'on' };
   }
     
+pincardClick = (e) => {
+  alert('pincard click')
+}
+
+forceUpdateHandler(){
+    this.forceUpdate();
+  };
+
+handleClick = (e, row) => {
+    // access to e.target here
+    if( isMobile.any() ){
+     alert('Mobile')
+    }else{
+     console.log(row.id);
+    }
+
+    console.log(this.props)
+    this.props.loadPin(row.id);
+    this.props.onRouteChange('singlepin');        
+}
+
+delClick = (e, row) => {
+    e.stopPropagation();    
+    let that = this;
+    let delConfirm = window.confirm('Are you sure you want to delete?');
+    if(delConfirm == true){
+      let now = Date.now();      
+      fetch('http://104.236.62.203:3000/deletepin', {
+          method: 'put',
+          headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         },
+          body: JSON.stringify({
+            pinid: row.id
+          })
+        })        
+        .then(function(response) {
+          return response.json()
+          
+        }).then(function(body) {
+          console.log(body);
+          //that.forceUpdate();
+          console.log(that.state)
+        });        
+        alert(that.props.route);
+        if(that.props.route == 'home'){
+          console.log('routing to MySubmissions')
+          setTimeout(function() { this.props.onRouteChange('mysubmissions'); }.bind(this), 500);
+        }else{
+          setTimeout(function() { this.props.onRouteChange('home'); }.bind(this), 500);
+        }
+        
+        
+    }else{
+
+    }    
+    
+}
+
+editClick = (e) => {
+    alert('Edi');
+    this.props.onRouteChange('edit');
+    e.stopPropagation();
+}  
 
 render() {
   /*var pins = this.state.rows.map(function(rows) {
       return (
         <li key={rows.key}>{rows.name}</li>
       );
-    });*/
+    });*/  
+
   const { loaded, rows } = this.state;
         return (
           <div className='css-table'>
@@ -81,19 +175,8 @@ render() {
 
               <div className='equalHMRWrap eqWrap'>
                 { this.state.loaded &&
-                   /* rows.map((user, i) =>
-                      <div id={i}>User.name[i]</div>)
-
-
-                      w-60-ns w-18-m w-18-l w-60 
-                      */                      
-                      rows.map((row, i) => {
-                        console.log('row',row)
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline' key={i}>                          
-                          Name: {row.name}<br />
-                          Artist: {row.artist}<br />                          
-                          <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
-                          <br/>
+                   /* 
+                    <br/>
                           {row.backimgname != ''
                             ?<div>Back<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.backimgname + '.jpg'} /></div>
                             :<div></div>
@@ -108,7 +191,19 @@ render() {
                             ?<div>UV<br /><img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.uvimgname + '.jpg'} /></div>                             
                             :<div></div>                            
                           }       
-                          <br />                  
+                          <br />
+
+                      */                      
+                      rows.map((row, i) => {
+                        console.log('row',row)
+                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline pincard' id='pincard' value={row.id} onClick={((e) => this.handleClick(e, row))} key={i}>
+                          <div className='center top-row'>
+                          <label className='fw6 b'>Name</label>
+                          <div className='icons'><img onClick={((e) => this.delClick(e, row))} src={del} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div></div>
+                          {row.name}<br />
+                          Artist: {row.artist}<br />                          
+                          <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
+                                            
                           </div>;
                       })
 

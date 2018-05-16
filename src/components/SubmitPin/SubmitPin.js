@@ -42,6 +42,8 @@ class SubmitPin extends React.Component {
       glow: '',
       uv: '',
       mod: '',
+      soldout:'',
+      damaged:'',
       categories: [],
       items: [],
       tagtype: '',
@@ -59,7 +61,7 @@ class SubmitPin extends React.Component {
     this.getBackImgData = this.getBackImgData.bind(this);
     this.getGlowImgData = this.getGlowImgData.bind(this);
     this.getUvImgData = this.getUvImgData.bind(this);    
-    console.log('User:',this.props.user);    
+    //console.log('User:',this.props.user);    
   }
 
 
@@ -95,6 +97,13 @@ class SubmitPin extends React.Component {
     this.setState({open: event.target.value})
   }
 
+  onSoldOutChange = (event) => {
+    this.setState({soldout: event.target.value})
+  }
+
+  onDamagedChange = (event) => {
+    this.setState({damaged: event.target.value})
+  }
   
   onGlowChange = (event) => {
     this.setState({glow: event.target.value})
@@ -139,10 +148,39 @@ class SubmitPin extends React.Component {
   	}
   }*/
 
+  	/*function setCatState(state) {
+      return new Promise(function(resolve, reject) {
+        categories.val = val.items;	
+		//console.log("val.items",val.items);
+		//console.log("categories.val",categories.val);
+		tagtype.val = val.selectedOption;	
+      })
+    }
+
+    var setCatState = getCanvasBlob(this.state);
+
+    setCatState.then((blob) => {
+      var that = this;
+      // do stuff with blob
+      myblob = blob;
+      console.log("Blob type:", myblob.type)
+      console.log("Blob size:", myblob.size)
+      this.setState({
+          file: myblob
+          //imagePreviewURL: src
+        })
+
+      this.props.sendData(myblob)
   
+      console.log("Blob state " + this.state); // getting value after the console outside
+    }, function(err) {
+      console.log(err)
+    });*/
+
 	/*clicked = (index) => {
 		console.log(index);
 	}*/
+
   	setCatState = (val) => {
   		this.setState({
         	categories: categories.val,
@@ -241,8 +279,8 @@ onSubmitClick = () => {
       	
       	
         this.setState({
-        	categories: categories.val,
-        	tagtype: tagtype.val,
+        	//categories: categories.val,//remove with logdata changes
+        	//tagtype: tagtype.val,
         	file: file,
         	backfile: backfile,
         	glowfile: glowfile,
@@ -318,8 +356,8 @@ onSubmitClick = () => {
       	
       	
         this.setState({
-        	categories: categories.val,
-        	tagtype: tagtype.val,
+        	//categories: categories.val,//maybe remove with list logdata changes
+        	//tagtype: tagtype.val,
         	file: file,
         	backfile: backfile,
         	glowfile: glowfile,
@@ -404,6 +442,8 @@ onSubmitClick = () => {
 	          maxno: this.state.maxno,
 	          glow: this.state.glow,
 	          uv: this.state.uv,
+	          soldout: this.state.soldout,
+	          damaged: this.state.damaged,
 	          categories: this.state.categories,
 	          about: this.state.about,
 	          userid: this.props.user.id,
@@ -421,7 +461,8 @@ onSubmitClick = () => {
 	        console.log(body);
 	      });
 
-	    this.props.onRouteChange('home');
+	    setTimeout(function() { this.props.onRouteChange('home'); }.bind(this), 500);  
+	    //this.props.onRouteChange('home');
     	console.log('State: ', this.state);
     }	
     	
@@ -430,7 +471,7 @@ onSubmitClick = () => {
 
   render() {
   	const { onRouteChange } = this.props;
-  	const { route, open, glow, uv, mod, imgURL, backURL, glowURL, uvURL } = this.state;
+  	const { route, open, glow, uv, mod, soldout, damaged, imgURL, backURL, glowURL, uvURL } = this.state;
   	return (<div className='contentdiv'>
   		{route==='form'
   		?<div className='br3 ba b--black-10 mv4 mw-100 shadow-5 center divblock'>
@@ -455,7 +496,7 @@ onSubmitClick = () => {
 				                <input onChange={this.onArtistChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="artist"  id="artist" placeholder="Who created it?"/>
 				              </div>
 				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="producer">Producer</label>
+				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                <input onChange={this.onProducerChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="producer"  id="producer" placeholder="Who released it?"/>
 				              </div>
 				              <div className="mt3">
@@ -483,6 +524,9 @@ onSubmitClick = () => {
 				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="open">Open #</label>
 				              				</td>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="soldout">Sold Out</label>
+				              				</td>
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
@@ -494,6 +538,9 @@ onSubmitClick = () => {
 				              				<td align='center'>
 							              		<input onChange={this.onOpenChange} className="" type="checkbox" name="open"  id="open" />
 							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onSoldOutChange} className="" type="checkbox" name="soldout"  id="soldout" />
+							              	</td>
 			              				</tr>
 						              	<tr>
 							              	<td align='center'>
@@ -503,7 +550,10 @@ onSubmitClick = () => {
 							              		<label className="db fw6 lh-copy f6" htmlFor="uv">UV</label>
 							              	</td>
 							              	<td align='center'>
-							              		<label className="db fw6 lh-copy f6" htmlFor="uv">Mod</label>
+							              		<label className="db fw6 lh-copy f6" htmlFor="mod">Mod</label>
+							              	</td>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="damaged">Damaged</label>
 							              	</td>
 						              	</tr>
 						              	<tr>
@@ -515,6 +565,9 @@ onSubmitClick = () => {
 							              	</td>
 							              	<td align='center'>
 							              		<input onChange={this.onModChange} className="" type="checkbox" name="mod"  id="mod" />
+							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onDamagedChange} className="" type="checkbox" name="damaged"  id="damaged" />
 							              	</td>
 						              	</tr>
 					              	</tbody>
@@ -589,7 +642,7 @@ onSubmitClick = () => {
 				                {this.state.artist}
 				              </div>
 				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="producer">Producer</label>
+				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                {this.state.producer}
 				              </div>
 				              <div className="mt3">
@@ -617,6 +670,9 @@ onSubmitClick = () => {
 				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="open">Open #</label>
 				              				</td>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="soldout">Sold Out</label>
+				              				</td>
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
@@ -628,6 +684,9 @@ onSubmitClick = () => {
 				              				<td align='center'>
 							              		{this.state.open}
 							              	</td>
+							              	<td align='center'>
+							              		{this.state.soldout}
+							              	</td>
 			              				</tr>
 						              	<tr>
 							              	<td align='center'>
@@ -637,7 +696,10 @@ onSubmitClick = () => {
 							              		<label className="db fw6 lh-copy f6" htmlFor="uv">UV</label>
 							              	</td>
 							              	<td align='center'>
-							              		<label className="db fw6 lh-copy f6" htmlFor="uv">Mod</label>
+							              		<label className="db fw6 lh-copy f6" htmlFor="mod">Mod</label>
+							              	</td>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="damaged">Damaged</label>
 							              	</td>
 						              	</tr>
 						              	<tr>
@@ -649,6 +711,9 @@ onSubmitClick = () => {
 							              	</td>
 							              	<td align='center'>
 							              		{this.state.mod}
+							              	</td>
+							              	<td align='center'>
+							              		{this.state.damaged}
 							              	</td>
 						              	</tr>
 					              	</tbody>
@@ -723,7 +788,7 @@ onSubmitClick = () => {
 				                <input onChange={this.onArtistChange} value={this.state.artist} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="artist"  id="artist" placeholder="Who created it?"/>
 				              </div>
 				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="producer">Producer</label>
+				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                <input onChange={this.onProducerChange} value={this.state.producer} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="producer"  id="producer" placeholder="Who released it?"/>
 				              </div>
 				              <div className="mt3">
@@ -751,6 +816,9 @@ onSubmitClick = () => {
 				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="open">Open #</label>
 				              				</td>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="open">Sold Out</label>
+				              				</td>
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
@@ -761,6 +829,9 @@ onSubmitClick = () => {
 				              				</td>
 				              				<td align='center'>
 							              		<input onChange={this.onOpenChange} checked={this.state.open} className="" type="checkbox" name="open"  id="open" />
+							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onSoldOutChange} checked={this.state.soldout} className="" type="checkbox" name="soldout"  id="soldout" />
 							              	</td>
 			              				</tr>
 						              	<tr>
@@ -773,6 +844,9 @@ onSubmitClick = () => {
 							              	<td align='center'>
 							              		<label className="db fw6 lh-copy f6" htmlFor="uv">Mod</label>
 							              	</td>
+							              	<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="uv">Damaged</label>
+							              	</td>
 						              	</tr>
 						              	<tr>
 							              	<td align='center'>
@@ -783,6 +857,9 @@ onSubmitClick = () => {
 							              	</td>
 							              	<td align='center'>
 							              		<input onChange={this.onModChange} checked={this.state.mod} className="" type="checkbox" name="mod"  id="mod" />
+							              	</td>
+							              	<td align='center'>
+							              		<input onChange={this.onDamagedChange} checked={this.state.damaged} className="" type="checkbox" name="damaged"  id="damaged" />
 							              	</td>
 						              	</tr>
 					              	</tbody>

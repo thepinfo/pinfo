@@ -24,8 +24,8 @@ class TodoItems extends Component {
   render() {
     var listEntries = this.props.entries;
     var listItems = listEntries.map(this.createTasks);
-    console.log('LisEntries:',listEntries)
-    console.log('ListItems:',listItems)
+    //console.log('LisEntries:',listEntries)
+    //console.log('ListItems:',listItems)
     //this.logData()        
     return (
       <ul className="theList">

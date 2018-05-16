@@ -10,6 +10,9 @@ import Register from './components/Register/Register';
 import MySubmissions from './components/MySubmissions/MySubmissions';
 import MyProfile from './components/MyProfile/MyProfile';
 import Search from './components/Search/Search';
+import SinglePin from './components/SinglePin/SinglePin';
+import AllArtists from './components/AllArtists/AllArtists';
+import SingleArtist from './components/SingleArtist/SingleArtist';
 //import Stats from './components/Stats/Stats';
 import './App.css';
 
@@ -44,6 +47,8 @@ const initialState = {
       imageUrl: '',
       route: 'Signin',
       isSignedIn: false,
+      singlePinId: '',
+      singleArtist:'',
       user: {
         id: '',
         name: '',
@@ -67,6 +72,16 @@ class App extends Component {
         entries: data.entries,
         joined: data.joined
     }})
+  }
+
+  loadPin = (data) => {
+    console.log('loadPin', data)
+    this.setState({singlePinId: data})
+  }
+
+  loadArtist = (data) => {
+    console.log('loadArtist', data)
+    this.setState({singleArtist: data})
   }
   /*componentDidMount() {
     fetch('http://localhost:3000')
@@ -148,7 +163,7 @@ class App extends Component {
           <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         </div>
         {route==='home' 
-          ? <div className='contentdiv'> <MySubmissions user={this.state.user} />
+          ? <div className='contentdiv'> <MySubmissions route={this.state.route} user={this.state.user} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
           {console.log(this.state.isSignedIn)}
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
@@ -168,6 +183,30 @@ class App extends Component {
           : (
               route === 'Signin' 
               ? <div  className='contentdiv'><Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} /></div>
+              : <div />
+            )
+        }
+        {route==='mysubmissions' 
+          ? <div className='contentdiv'> <MySubmissions user={this.state.user} route={this.state.route} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
+          {console.log(this.state.isSignedIn)}
+            {/*isSignedIn==='true'
+              ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              :<div>Hi</div>*/
+            }           
+              {/*<SubmitPin
+                user={this.state.user}
+                onInputChange={this.onInputChange} 
+                onButtonSubmit={this.onButtonSubmit}
+              />*/}
+              
+              {/*
+                
+                <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
               : <div />
             )
         }
@@ -243,6 +282,66 @@ class App extends Component {
         {route==='search' 
           ? <div className='contentdiv'>
               <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='singlepin' 
+          ? <div className='contentdiv center'>
+              <SinglePin
+                pin={this.state.singlePinId}
+                route={this.state.route}
+                onRouteChange={this.onRouteChange}
+              />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='allartists' 
+          ? <div className='contentdiv center'>
+              <AllArtists
+                loadArtist={this.loadArtist}
+                artist={this.state.singleArtist}
+                onRouteChange={this.onRouteChange}
+              />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='singleartist' 
+          ? <div className='contentdiv center'>
+              <SingleArtist
+                artist={this.state.singleArtist}
+                loadPin={this.loadPin}
+                onRouteChange={this.onRouteChange}
+              />
               
               {/*<DisplayPin imageUrl={imageUrl} />
               <FaceRecognition />
