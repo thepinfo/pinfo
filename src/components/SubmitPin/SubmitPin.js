@@ -799,6 +799,9 @@ onSubmitClick = () => {
 				              		<tbody align='center'>
 				              			<tr align='center'>
 				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Drop Price</label>
+				              				</td>
+				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Pin #</label>
 				              				</td>
 				              				<td align='center'> 
@@ -813,6 +816,9 @@ onSubmitClick = () => {
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
+			              						{this.state.drop}
+				              				</td>
+			              					<td align='center'>
 			              						{this.state.pinno}
 				              				</td>
 				              				<td align='center'>
@@ -826,6 +832,9 @@ onSubmitClick = () => {
 							              	</td>
 			              				</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="nsfw">NSFW</label>
+							              	</td>
 							              	<td align='center'>
 							              		<label className="db fw6 lh-copy f6" htmlFor="glow">Glow</label>
 							              	</td>
@@ -840,6 +849,9 @@ onSubmitClick = () => {
 							              	</td>
 						              	</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		{this.state.nsfw}
+							              	</td>
 							              	<td align='center'>
 							              		{this.state.glow}
 							              	</td>
@@ -958,6 +970,9 @@ onSubmitClick = () => {
 				              		<tbody>
 				              			<tr>
 				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="drop">Drop Price</label>
+				              				</td>
+				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Pin #</label>
 				              				</td>
 				              				<td align='center'> 
@@ -972,6 +987,9 @@ onSubmitClick = () => {
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
+			              						<input onChange={this.onDropChange} value={this.state.drop} className="pa2 input-reset ba bg-transparent hover-white w-100" type="text" name="drop"  id="drop" />
+				              				</td>
+			              					<td align='center'>
 			              						<input onChange={this.onPinNoChange} value={this.state.pinno} className="pa2 input-reset ba bg-transparent hover-white w-100" type="text" name="pinno"  id="pinno" />
 				              				</td>
 				              				<td align='center'>
@@ -985,6 +1003,9 @@ onSubmitClick = () => {
 							              	</td>
 			              				</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="nsfw">NSFW</label>
+							              	</td>
 							              	<td align='center'>
 							              		<label className="db fw6 lh-copy f6" htmlFor="glow">Glow</label>
 							              	</td>
@@ -999,6 +1020,9 @@ onSubmitClick = () => {
 							              	</td>
 						              	</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		<input onChange={this.onNsfwChange} checked={this.state.nsfw} className="" type="checkbox" name="nsfw"  id="nsfw" />
+							              	</td>
 							              	<td align='center'>
 							              		<input onChange={this.onGlowChange} checked={this.state.glow} className="" type="checkbox" name="glow"  id="glow" />
 							              	</td>
