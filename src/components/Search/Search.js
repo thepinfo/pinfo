@@ -41,16 +41,16 @@ class Search extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((body) => {
-        console.log('body',body);
-        console.log('this',this.state);
+        //console.log('body',body);
+        //console.log('this',this.state);
         this.setState({
                     rows: body.rows ,
                     loaded: true
                 });
         rows = body.rows;     
-        console.log('rows',rows)
+        //console.log('rows',rows)
       }).then(function() {
-        console.log('rows 2',rows)
+        //console.log('rows 2',rows)
       });
   }
     
@@ -64,7 +64,7 @@ render() {
               <div className='equalHMRWrap eqWrap'>
                 { this.state.loaded &&                                     
                       rows.map((row, i) => {
-                        console.log('row',row)
+                        //console.log('row',row)
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline' key={i}>
                           Name: {row.name}<br />
                           Artist: {row.artist}<br />                          

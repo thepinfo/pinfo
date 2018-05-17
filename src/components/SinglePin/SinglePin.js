@@ -27,7 +27,7 @@ var isMobile = {
     }
 };
 
-console.log("back", back);
+//console.log("back", back);
 class SinglePin extends React.Component {
   constructor(props){
     super();
@@ -64,17 +64,17 @@ class SinglePin extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((body) => {
-        console.log('body',body);
-        console.log('this',this.state);
+        //console.log('body',body);
+        //console.log('this',this.state);
         this.setState({
                     pin: body.rows,
                     loaded: true
                 });
         pin = body.rows;   
         //this.setState({rows: body.rows});      
-        console.log('pin',pin[0])
+        //console.log('pin',pin[0])
       }).then(function() {
-        console.log('rows 2',pin)
+        //console.log('rows 2',pin)
       });
 
       
@@ -101,13 +101,13 @@ class SinglePin extends React.Component {
           return response.json()
           
         }).then(function(body) {
-          console.log(body);
+          //console.log(body);
           //that.forceUpdate();
-          console.log(that.state)
+          //console.log(that.state)
         });        
         alert(that.props.route);
         if(that.props.route == 'home'){
-          console.log('routing to MySubmissions')
+          //console.log('routing to MySubmissions')
           setTimeout(function() { this.props.onRouteChange('mysubmissions'); }.bind(this), 500);
         }else{
           setTimeout(function() { this.props.onRouteChange('home'); }.bind(this), 500);
@@ -184,7 +184,6 @@ render() {
                           <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div>
                       */                      
                       pin.map((row, i) => {
-                        console.log('row',row)
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 w-50 mv2 shadow-5 center inline' key={i}>
                           <div className='center top-row'>
                           <label className='fw6 b'>Name</label>                          

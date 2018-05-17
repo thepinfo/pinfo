@@ -21,38 +21,38 @@ class FileUpload extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log('fileupload props', this.props)
+    //console.log('fileupload props', this.props)
     if('getState' in this.props){
       this.setState({
         file: this.props.getState.file,
         imagePreviewURL: this.props.getState.imgURL
       })
-     console.log('File Props State',this.props.getState)
-     console.log('FileUpload State',this.state)
+     //console.log('File Props State',this.props.getState)
+     //console.log('FileUpload State',this.state)
     }
     if('getBackState' in this.props){
       this.setState({
         file: this.props.getBackState.backfile,
         imagePreviewURL: this.props.getBackState.backURL
       })
-     console.log('backfile Props State',this.props.getState)
-     console.log('backFileUpload State',this.state)
+     //console.log('backfile Props State',this.props.getState)
+     //console.log('backFileUpload State',this.state)
     } 
     if('getGlowState' in this.props){
       this.setState({
         file: this.props.getGlowState.glowfile,
         imagePreviewURL: this.props.getGlowState.glowURL
       })
-     console.log('glowfile Props State',this.props.getState)
-     console.log('glowFileUpload State',this.state)
+     //console.log('glowfile Props State',this.props.getState)
+     //console.log('glowFileUpload State',this.state)
     } 
     if('getUvState' in this.props){
       this.setState({
         file: this.props.getUvState.uvfile,
         imagePreviewURL: this.props.getUvState.uvURL
       })
-     console.log('uvfile Props State',this.props.getState)
-     console.log('uvFileUpload State',this.state)
+    // console.log('uvfile Props State',this.props.getState)
+    // console.log('uvFileUpload State',this.state)
     } 
   }
 
@@ -91,7 +91,7 @@ class FileUpload extends React.Component {
         var imageSize =  Math.round(file.size/1024);
         
         if(imageSize > 2000){
-          console.log('gonna jimp')
+          //console.log('gonna jimp')
           var stripped = rResult.replace(/^data:image\/[a-z]+;base64,/, "");
           var coded_img = new Buffer(stripped, 'base64');
 
@@ -144,7 +144,7 @@ class FileUpload extends React.Component {
       $imagePreview = (
           <Cropper alt='preview' ref='cropper' style={{}}
         guides={true}
-        viewMode={3}
+        viewMode={2}
         rotatable={true}
         dragMode={'none'}
         autoCropArea={1}

@@ -75,12 +75,12 @@ class App extends Component {
   }
 
   loadPin = (data) => {
-    console.log('loadPin', data)
+    //console.log('loadPin', data)
     this.setState({singlePinId: data})
   }
 
   loadArtist = (data) => {
-    console.log('loadArtist', data)
+    //console.log('loadArtist', data)
     this.setState({singleArtist: data})
   }
   /*componentDidMount() {
@@ -136,7 +136,7 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    console.log('route',route)
+    //console.log('route',route)
     if (route === 'signout') {
       this.setState(initialState)
     } else if (route === 'home') {
@@ -164,7 +164,7 @@ class App extends Component {
         </div>
         {route==='home' 
           ? <div className='contentdiv'> <MySubmissions route={this.state.route} user={this.state.user} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
-          {console.log(this.state.isSignedIn)}
+          
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               :<div>Hi</div>*/
@@ -188,7 +188,7 @@ class App extends Component {
         }
         {route==='mysubmissions' 
           ? <div className='contentdiv'> <MySubmissions user={this.state.user} route={this.state.route} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
-          {console.log(this.state.isSignedIn)}
+          
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
               :<div>Hi</div>*/

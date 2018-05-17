@@ -25,7 +25,7 @@ var isMobile = {
     }
 };
 
-console.log("back", back);
+//console.log("back", back);
 class AllArtists extends React.Component {
   constructor(props){
     super();
@@ -62,17 +62,17 @@ class AllArtists extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((body) => {
-        console.log('body',body);
-        console.log('this',this.state);
+        //console.log('body',body);
+        //console.log('this',this.state);
         this.setState({
                     rows: body.rows ,
                     loaded: true
                 });
         rows = body.rows;   
         //this.setState({rows: body.rows});      
-        console.log('rows',rows)
+        //console.log('rows',rows)
       }).then(function() {
-        console.log('rows 2',rows)
+        //console.log('rows 2',rows)
       });
 
       
@@ -88,10 +88,10 @@ handleClick = (e, row) => {
     if( isMobile.any() ){
      alert('Mobile')
     }else{
-     console.log(row.artist);
+     //console.log(row.artist);
     }
 
-    console.log(this.props)
+    //console.log(this.props)
     this.props.loadArtist(row.artist);
     this.props.onRouteChange('singleartist');        
 }
@@ -142,8 +142,7 @@ render() {
                           <br />
 
                       */                      
-                      rows.map((row, i) => {
-                        console.log('row',row)
+                      rows.map((row, i) => {                        
                           return <div className='equalHMR eq artistwcontrol r3 ba b--black-10 mv2 shadow-5 center inline pincard' id='pincard' value={row.artist} onClick={((e) => this.handleClick(e, row))} key={i}>
                           <label className='f3 b'>{row.artist}</label>
                           </div>;

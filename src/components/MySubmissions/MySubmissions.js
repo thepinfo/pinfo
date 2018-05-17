@@ -27,7 +27,7 @@ var isMobile = {
     }
 };
 
-console.log("back", back);
+//console.log("back", back);
 class MyPins extends React.Component {
   constructor(props){
     super();
@@ -66,17 +66,17 @@ class MyPins extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((body) => {
-        console.log('body',body);
-        console.log('this',this.state);
+        //console.log('body',body);
+        //console.log('this',this.state);
         this.setState({
                     rows: body.rows ,
                     loaded: true
                 });
         rows = body.rows;   
         //this.setState({rows: body.rows});      
-        console.log('rows',rows)
+        //console.log('rows',rows)
       }).then(function() {
-        console.log('rows 2',rows)
+        //console.log('rows 2',rows)
       });
 
       
@@ -96,10 +96,10 @@ handleClick = (e, row) => {
     if( isMobile.any() ){
      alert('Mobile')
     }else{
-     console.log(row.id);
+     //console.log(row.id);
     }
 
-    console.log(this.props)
+    //console.log(this.props)
     this.props.loadPin(row.id);
     this.props.onRouteChange('singlepin');        
 }
@@ -124,13 +124,13 @@ delClick = (e, row) => {
           return response.json()
           
         }).then(function(body) {
-          console.log(body);
+          //console.log(body);
           //that.forceUpdate();
-          console.log(that.state)
+         // console.log(that.state)
         });        
         alert(that.props.route);
         if(that.props.route == 'home'){
-          console.log('routing to MySubmissions')
+          //console.log('routing to MySubmissions')
           setTimeout(function() { this.props.onRouteChange('mysubmissions'); }.bind(this), 500);
         }else{
           setTimeout(function() { this.props.onRouteChange('home'); }.bind(this), 500);
@@ -194,8 +194,7 @@ render() {
                           <br />
 
                       */                      
-                      rows.map((row, i) => {
-                        console.log('row',row)
+                      rows.map((row, i) => {                        
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline pincard' id='pincard' value={row.id} onClick={((e) => this.handleClick(e, row))} key={i}>
                           <div className='center top-row'>
                           <label className='fw6 b'>Name</label>

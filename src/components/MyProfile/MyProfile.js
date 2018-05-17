@@ -37,17 +37,17 @@ class MyProfile extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((body) => {
-        console.log('body',body);
-        console.log('this',this.state);
+        //console.log('body',body);
+        //console.log('this',this.state);
         this.setState({
                     rows: body.rows ,
                     loaded: true
                 });
         rows = body.rows;   
         //this.setState({rows: body.rows});      
-        console.log('rows',rows)
+        //console.log('rows',rows)
       }).then(function() {
-        console.log('rows 2',rows)
+        //console.log('rows 2',rows)
       });
 
       
@@ -87,8 +87,7 @@ render() {
                       w-60-ns w-18-m w-18-l w-60 
                       */
                                             
-                      rows.map((row, i) => {
-                        console.log('row',row)
+                      rows.map((row, i) => {                        
                           return <div className='br3 ba b--black-10 w-100 w-50-m w-25-l shadow-5 center' key={i}>
                           <div><label className="f4 fw6 ph0 mh0">My Profile</label><br />
                           Name: {row.name}<br />

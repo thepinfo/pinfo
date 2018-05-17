@@ -24,7 +24,7 @@
 		res.json(entries[0]);
 	})
 	.catch(err => res.status(400).json('unable to get entries'))
-*/	console.log(req);
+*/	//console.log(req);
 	db.transaction(trx => {
 			trx.insert({
 				name: name,				

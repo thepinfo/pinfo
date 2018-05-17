@@ -38,7 +38,7 @@ class List extends Component {
       selectedOption: 'misc'
     };
     
-    console.log("List Items:",this.state.items)
+    //console.log("List Items:",this.state.items)
   }
 
   handleOptionChange = (changeEvent) => {
@@ -58,10 +58,10 @@ class List extends Component {
 
   getItemData = (val) => {
     // do not forget to bind getData in constructor
-    console.log("val",val);
+    //console.log("val",val);
     categories.val = val; 
-    console.log("val.items",val.items);
-    console.log("categories.val",categories.val);
+    //console.log("val.items",val.items);
+    //console.log("categories.val",categories.val);
     tagtype.val = val.selectedOption;   
     //this.setCatState(val);      
   }
@@ -75,7 +75,7 @@ class List extends Component {
     }//.then sendData*/
 
     logData = () => {
-      console.log('LogData:',this.state)
+      //console.log('LogData:',this.state)
       this.props.sendData(this.state);
     }
 
@@ -99,7 +99,7 @@ class List extends Component {
      
         this._inputElement.value = "";
       }
-      console.log("AddItem Items:",this.state.items) 
+      //console.log("AddItem Items:",this.state.items) 
 
       /*var newPromise = getPromise(this.state.items).then(function(data) {  // Line 1
         return getPromise(data);  //Line 2
@@ -125,7 +125,7 @@ class List extends Component {
   } 
   
   promiseData = (e) => {
-    console.log("promiseData")
+    //console.log("promiseData")
     if (this._inputElement.value !== "") {
                   var newItem = {
                     tagtype: this.state.selectedOption,
@@ -159,13 +159,13 @@ class List extends Component {
             .then((fulfilled) => {
               
                 // yay, you got a new phone
-                console.log("setPromise",this.state.items);
+                //console.log("setPromise",this.state.items);
                 this.logData(this.state.items);
              // output: { brand: 'Samsung', color: 'black' }
             })
             .catch(function (error) {
                 // oops, mom don't buy it
-                console.log(error.message);
+                //console.log(error.message);
              // output: 'mom is not happy'
             });
     }

@@ -159,7 +159,7 @@ class SubmitPin extends React.Component {
     	tag: '',
       	categories: [...this.state.categories, this.state.tag]
     });
-    console.log('logging categores',this.state.categories)
+    //console.log('logging categores',this.state.categories)
   }
 
   /*checked(){
@@ -208,7 +208,7 @@ class SubmitPin extends React.Component {
         	tagtype: tagtype.val,
         	items: categories.val
         });
-        console.log("categories: ", categories); 	
+       // console.log("categories: ", categories); 	
   	}
 
 	getListData = (val) => {
@@ -225,7 +225,7 @@ class SubmitPin extends React.Component {
 	    // do not forget to bind getData in constructor
 	    //console.log(val);
 	    file = val;    
-	    console.log("Image: ", file);
+	    //console.log("Image: ", file);
     	this.setState({
         	file: file
         });   
@@ -235,7 +235,7 @@ class SubmitPin extends React.Component {
 	    // do not forget to bind getData in constructor
 	    //console.log(val);
 	    backfile = val;    
-	    console.log("Image: ", backfile);
+	   // console.log("Image: ", backfile);
     	this.setState({
         	backfile: backfile
         });   
@@ -245,7 +245,7 @@ class SubmitPin extends React.Component {
 	    // do not forget to bind getData in constructor
 	    //console.log(val);
 	    glowfile = val;    
-	    console.log("glowImage: ", glowfile);
+	   // console.log("glowImage: ", glowfile);
     	this.setState({
         	glowfile: glowfile
         });   
@@ -255,7 +255,7 @@ class SubmitPin extends React.Component {
 	    // do not forget to bind getData in constructor
 	    //console.log(val);
 	    uvfile = val;    
-	    console.log("uvImage: ", uvfile);
+	   // console.log("uvImage: ", uvfile);
     	this.setState({
         	uvfile: uvfile
         });   
@@ -266,7 +266,7 @@ onSubmitClick = () => {
 	
 	now = Date.now();
   		imgname = this.props.user.id + '-' + now;
-  		console.log('name: ',imgname);
+  		//console.log('name: ',imgname);
   		data = new FormData();
 	    data.append('file', file);
 	    data.append('filename', imgname);
@@ -278,7 +278,7 @@ onSubmitClick = () => {
 
 	    if(backfile != null){
 	  		backname = this.props.user.id + '-back-' + now;
-	  		console.log('backname: ',backname);
+	  		//console.log('backname: ',backname);
 	  		backdata = new FormData();
 		    backdata.append('file', backfile);
 		    backdata.append('filename', backname);
@@ -287,7 +287,7 @@ onSubmitClick = () => {
 
 		if(glowfile != null){
 		    glowname = this.props.user.id + '-glow-' + now;
-	  		console.log('glowname: ',glowname);
+	  		//console.log('glowname: ',glowname);
 	  		glowdata = new FormData();
 		    glowdata.append('file', glowfile);
 		    glowdata.append('filename', glowname);
@@ -296,7 +296,7 @@ onSubmitClick = () => {
 
 	    if(uvfile != null){
 		    uvname = this.props.user.id + '-uv-' + now;
-	  		console.log('uvname: ',uvname);
+	  		//console.log('uvname: ',uvname);
 	  		uvdata = new FormData();
 		    uvdata.append('file', uvfile);
 		    uvdata.append('filename', uvname);
@@ -314,8 +314,8 @@ onSubmitClick = () => {
 	        	glowURL: glowURL,
 	        	uvURL: uvURL
 	        });     
-		    console.log('route')
-		    console.log('SubmitClick State:',this.state)    
+		   // console.log('route')
+		   // console.log('SubmitClick State:',this.state)    
 
 		    this.setState({route: 'confirm'})
     	}.bind(this), 500);
@@ -325,7 +325,7 @@ onSubmitClick = () => {
   
   onExitClick = () => {
   	var confirm = window.confirm('Are you sure?');
-    console.log('route')
+   // console.log('route')
     /*if (route === 'signout') {
       this.setState(initialState)
     } else if (route === 'home') {
@@ -342,7 +342,7 @@ onSubmitClick = () => {
   onEditClick = () => {
     now = Date.now();
   		imgname = this.props.user.id + '-' + now;
-  		console.log('name: ',imgname);
+  		//console.log('name: ',imgname);
   		data = new FormData();
 	    data.append('file', file);
 	    data.append('filename', imgname);
@@ -354,7 +354,7 @@ onSubmitClick = () => {
 
 	    if(backfile != null){
 	  		backname = this.props.user.id + '-back-' + now;
-	  		console.log('backname: ',backname);
+	  		//console.log('backname: ',backname);
 	  		backdata = new FormData();
 		    backdata.append('file', backfile);
 		    backdata.append('filename', backname);
@@ -363,7 +363,7 @@ onSubmitClick = () => {
 
 		if(glowfile != null){
 		    glowname = this.props.user.id + '-glow-' + now;
-	  		console.log('glowname: ',glowname);
+	  		//console.log('glowname: ',glowname);
 	  		glowdata = new FormData();
 		    glowdata.append('file', glowfile);
 		    glowdata.append('filename', glowname);
@@ -372,7 +372,7 @@ onSubmitClick = () => {
 
 	    if(uvfile != null){
 		    uvname = this.props.user.id + '-uv-' + now;
-	  		console.log('uvname: ',uvname);
+	  		//console.log('uvname: ',uvname);
 	  		uvdata = new FormData();
 		    uvdata.append('file', uvfile);
 		    uvdata.append('filename', uvname);
@@ -390,8 +390,8 @@ onSubmitClick = () => {
 	        	glowURL: glowURL,
 	        	uvURL: uvURL
 	        });     
-		    console.log('route')
-		    console.log('SubmitClick State:',this.state)    
+		    //console.log('route')
+		    //console.log('SubmitClick State:',this.state)    
 
 		    this.setState({route: 'edit'}) 
     	}.bind(this), 500);
@@ -406,7 +406,7 @@ onSubmitClick = () => {
 
   		
   		imgname = this.props.user.id + '-' + now;
-  		console.log('name: ',imgname);
+  		//console.log('name: ',imgname);
   		data = new FormData();
 	    data.append('file', file);
 	    data.append('filename', imgname);
@@ -427,7 +427,7 @@ onSubmitClick = () => {
         	uvfile: uvfile
         });     	
 
-     	console.log("file before if: ", file);
+     	//console.log("file before if: ", file);
     if(file == null){
     	alert('An image is required');
     }else{  		
@@ -443,7 +443,7 @@ onSubmitClick = () => {
 
 	    if(backfile != null){
 	    	backname = this.props.user.id + '-back-' + now;
-	  		console.log('backname: ',backname);
+	  		//console.log('backname: ',backname);
 	  		backdata = new FormData();
 		    backdata.append('file', backfile);
 		    backdata.append('filename', backname);
@@ -459,7 +459,7 @@ onSubmitClick = () => {
 
 	    if(glowfile != null){
 	    	glowname = this.props.user.id + '-glow-' + now;
-	  		console.log('glowname: ',glowname);
+	  		//console.log('glowname: ',glowname);
 	  		glowdata = new FormData();
 		    glowdata.append('file', glowfile);
 		    glowdata.append('filename', glowname);
@@ -475,7 +475,7 @@ onSubmitClick = () => {
 
 	    if(uvfile != null){
 	    	const uvname = this.props.user.id + '-uv-' + now;
-	  		console.log('uvname: ',uvname);
+	  		//console.log('uvname: ',uvname);
 	  		const uvdata = new FormData();
 		    uvdata.append('file', uvfile);
 		    uvdata.append('filename', uvname);
@@ -526,7 +526,7 @@ onSubmitClick = () => {
 	      .then(function(response) {
 	        return response.json()
 	      }).then(function(body) {
-	        console.log(body);
+	        //console.log(body);
 	      });
 
 	      
@@ -583,10 +583,10 @@ onSubmitClick = () => {
 			glowURL = '';
 			uvURL = '';
 			now = '';
-			console.log('timeoutstate',this.state)
+			//console.log('timeoutstate',this.state)
 	     this.props.onRouteChange('home'); }.bind(this), 500);  
 	    //this.props.onRouteChange('home');
-    	console.log('State: ', this.state);
+    	//console.log('State: ', this.state);
     }	
     	
   }
