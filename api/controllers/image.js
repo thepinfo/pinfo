@@ -9,7 +9,7 @@
 	    database : 'pinfo'
 	  }
 	});
- 	const { name, artist, producer, year, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories } = req.body;
+ 	const { name, artist, producer, year, month, day, nsfw, drop, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories, submitted } = req.body;
  	
  	/*const { email, name, password } = req.body;
 	if (!email || !name || !password) {
@@ -31,6 +31,10 @@
 				artist: artist,
 				producer: producer,
 				year: year,
+				month: month,
+				day: day,
+				nsfw: nsfw,
+				drop: drop,
 				variant: variant,
 				pinno: pinno,
 				maxno: maxno,
@@ -44,7 +48,8 @@
 				imgname: imgname,
 				backimgname: backimgname,
 				glowimgname: glowimgname,
-				uvimgname: uvimgname
+				uvimgname: uvimgname,
+				submitted: submitted
 				//loc: file,
 			})
 			.into('pins')

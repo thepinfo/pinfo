@@ -13,6 +13,7 @@ xxxxlaunch server
 xxxxlaunch database
 xxxxlaunch app beta
 ----terms of service
+----logo as link
 
 
 
@@ -25,19 +26,37 @@ xxxxlaunch app beta
 
 ****$$$*$*$* Future Components *$*$*$$$****
 ----Pin search
-----my profile {messaging system, my pinpals, my boards}
+x---my profile {messaging system, my pinpals, my boards}
 ----edit profile(maybe part of my as a button click to make forms editable and show a submit button?)
 ----forgot password
-----navigation extensible components for search, artist profiles, categories, my profile
+0000remember me
+xx--navigation extensible components for search, artist profiles, categories, my profile
 ----make a board
 
 **^*^*$$%% Components in Progress %%$$*^*^**
 &&^^& Submit a Pin &^^&&
 xxxxsay something about this pin
-----if no image pass none
+xxxxif no image pass none
+xxxxBack of pin
+xxxxpin submission confirmation page
+----If no image set for back/glow/uv don't display preview on confirm
+xxxxclear all state after submit!!!!
+----NSFW, Drop Price
+----cancel pic if needed
+----go back to edit and change pic
+----Online or event drop
+xxxxYear -> release date selector
+
+&&^^& My Submissions &^^&&
+---- Add a third 2 column responsive break
+---- Edit/delete my pin
+---- only show edit/delete on my pins
 
 
-FIX MOBILE JANKINESS
 
-https://gist.github.com/bastiendavid/47bbdc534cac230ad35c
 
+$$$$$$$$---Mobile---$$$$$$$$
+----Menu closes after hitting a link
+----text shrink to fit container
+----containers 80%? 
+----Margin on submit form

@@ -35,6 +35,8 @@ class SubmitPin extends React.Component {
       artist: '',
       producer: '',
       year: '',
+      day: '',
+      month: '',
       variant: '',
       pinno: '',
       maxno: '',
@@ -54,7 +56,10 @@ class SubmitPin extends React.Component {
       imgURL:'',
       backURL:'',
       glowURL:'',
-      uvURL:''
+      uvURL:'',
+      nsfw: '',
+      drop: '',
+      submitted: ''
     }
     this.getListData = this.getListData.bind(this);
     this.getImgData = this.getImgData.bind(this);
@@ -75,6 +80,14 @@ class SubmitPin extends React.Component {
 
   onProducerChange = (event) => {
     this.setState({producer: event.target.value})
+  }
+
+  onDayChange = (event) => {
+    this.setState({day: event.target.value})
+  }
+
+  onMonthChange = (event) => {
+    this.setState({month: event.target.value})
   }
 
   onYearChange = (event) => {
@@ -104,6 +117,10 @@ class SubmitPin extends React.Component {
   onDamagedChange = (event) => {
     this.setState({damaged: event.target.value})
   }
+
+  onDropChange = (event) => {
+    this.setState({drop: event.target.value})
+  }
   
   onGlowChange = (event) => {
     this.setState({glow: event.target.value})
@@ -121,6 +138,10 @@ class SubmitPin extends React.Component {
 
   onModChange = (event) => {
     this.setState({mod: event.target.value})
+  }
+
+  onNsfwChange = (event) => {
+    this.setState({nsfw: event.target.value})
   }
 
   onAboutChange = (event) => {
@@ -242,13 +263,18 @@ class SubmitPin extends React.Component {
 
 
 onSubmitClick = () => {
+	
 	now = Date.now();
   		imgname = this.props.user.id + '-' + now;
   		console.log('name: ',imgname);
   		data = new FormData();
 	    data.append('file', file);
 	    data.append('filename', imgname);
-	    imgURL = URL.createObjectURL(file);
+	    
+	if(file == null){
+    	alert('An image is required');
+    }else{
+    	imgURL = URL.createObjectURL(file);
 
 	    if(backfile != null){
 	  		backname = this.props.user.id + '-back-' + now;
@@ -277,30 +303,23 @@ onSubmitClick = () => {
 		    uvURL = URL.createObjectURL(uvfile);
 		}
       	
-      	
-        this.setState({
-        	//categories: categories.val,//remove with logdata changes
-        	//tagtype: tagtype.val,
-        	file: file,
-        	backfile: backfile,
-        	glowfile: glowfile,
-        	uvfile: uvfile,
-        	imgURL: imgURL,
-        	backURL: backURL,
-        	glowURL: glowURL,
-        	uvURL: uvURL
-        });     
-    console.log('route')
-    console.log('SubmitClick State:',this.state)
-    /*if (route === 'signout') {
-      this.setState(initialState)
-    } else if (route === 'home') {
-      this.setState({isSignedIn: true})
-    } else if (route === 'submitpin') {
-      this.setState({isSignedIn: true})
-    }*/
+      	setTimeout(function() {  
+	        this.setState({
+	        	file: file,
+	        	backfile: backfile,
+	        	glowfile: glowfile,
+	        	uvfile: uvfile,
+	        	imgURL: imgURL,
+	        	backURL: backURL,
+	        	glowURL: glowURL,
+	        	uvURL: uvURL
+	        });     
+		    console.log('route')
+		    console.log('SubmitClick State:',this.state)    
 
-    this.setState({route: 'confirm'})    
+		    this.setState({route: 'confirm'})
+    	}.bind(this), 500);
+    }    
   }
 
   
@@ -321,20 +340,64 @@ onSubmitClick = () => {
   }
 
   onEditClick = () => {
-    console.log('route')
-    
-    if(this.state.glow == 'on'){
-    	console.log('glow',this.state.glow)
-    }
-    /*if (route === 'signout') {
-      this.setState(initialState)
-    } else if (route === 'home') {
-      this.setState({isSignedIn: true})
-    } else if (route === 'submitpin') {
-      this.setState({isSignedIn: true})
-    }*/
+    now = Date.now();
+  		imgname = this.props.user.id + '-' + now;
+  		console.log('name: ',imgname);
+  		data = new FormData();
+	    data.append('file', file);
+	    data.append('filename', imgname);
+	    
+	if(file == null){
+    	alert('An image is required');
+    }else{
+    	imgURL = URL.createObjectURL(file);
 
-    this.setState({route: 'edit'})    
+	    if(backfile != null){
+	  		backname = this.props.user.id + '-back-' + now;
+	  		console.log('backname: ',backname);
+	  		backdata = new FormData();
+		    backdata.append('file', backfile);
+		    backdata.append('filename', backname);
+		    backURL = URL.createObjectURL(backfile);
+		}
+
+		if(glowfile != null){
+		    glowname = this.props.user.id + '-glow-' + now;
+	  		console.log('glowname: ',glowname);
+	  		glowdata = new FormData();
+		    glowdata.append('file', glowfile);
+		    glowdata.append('filename', glowname);
+		    glowURL = URL.createObjectURL(glowfile);
+		}
+
+	    if(uvfile != null){
+		    uvname = this.props.user.id + '-uv-' + now;
+	  		console.log('uvname: ',uvname);
+	  		uvdata = new FormData();
+		    uvdata.append('file', uvfile);
+		    uvdata.append('filename', uvname);
+		    uvURL = URL.createObjectURL(uvfile);
+		}
+      	
+      	setTimeout(function() {  
+	        this.setState({
+	        	file: file,
+	        	backfile: backfile,
+	        	glowfile: glowfile,
+	        	uvfile: uvfile,
+	        	imgURL: imgURL,
+	        	backURL: backURL,
+	        	glowURL: glowURL,
+	        	uvURL: uvURL
+	        });     
+		    console.log('route')
+		    console.log('SubmitClick State:',this.state)    
+
+		    this.setState({route: 'edit'}) 
+    	}.bind(this), 500);
+    }    
+
+       
   }
 
   onSubmitPin = () => {  	
@@ -437,6 +500,10 @@ onSubmitClick = () => {
 	          artist: this.state.artist,
 	          producer: this.state.producer,
 	          year: this.state.year,
+	          month: this.state.month,
+	          day: this.state.day,
+	          nsfw: this.state.nsfw,
+	          drop: this.state.drop,
 	          variant: this.state.variant,
 	          pinno: this.state.pinno,
 	          maxno: this.state.maxno,
@@ -450,7 +517,8 @@ onSubmitClick = () => {
 	          imgname: imgname,
 	          backimgname: backname,
 	          glowimgname: glowname,
-	          uvimgname: uvname
+	          uvimgname: uvname,
+	          submitted: now
 	          //categories: this.state.categories,
 	          //file: this.state.file
 	        })
@@ -461,7 +529,62 @@ onSubmitClick = () => {
 	        console.log(body);
 	      });
 
-	    setTimeout(function() { this.props.onRouteChange('home'); }.bind(this), 500);  
+	      
+	    setTimeout(function() {
+	    	this.setState({
+		      route: 'form',
+		      name: '',
+		      artist: '',
+		      producer: '',
+		      year: '',
+		      day: '',
+		      month: '',
+		      nsfw: '',
+		      drop:'',
+		      variant: '',
+		      pinno: '',
+		      maxno: '',
+		      open: '',
+		      glow: '',
+		      uv: '',
+		      mod: '',
+		      soldout:'',
+		      damaged:'',
+		      categories: [],
+		      items: [],
+		      tagtype: '',
+		      file: '',
+		      backfile: '',
+		      glowfile: '',
+		      uvfile: '',
+		      imgURL:'',
+		      backURL:'',
+		      glowURL:'',
+		      uvURL:'',
+		      submitted:''
+		    })
+
+	    	categories = {};
+			tagtype = {};
+			file = null;
+			imgname = '';
+			data = null;
+			backfile = null;
+			backdata = null;
+			backname = '';
+			glowfile = null;
+			glowdata = null;
+			glowname = '';
+			uvfile = null;
+			uvdata = null;
+			uvname = '';
+			imgURL = '';
+			backURL = '';
+			glowURL = '';
+			uvURL = '';
+			now = '';
+			console.log('timeoutstate',this.state)
+	     this.props.onRouteChange('home'); }.bind(this), 500);  
 	    //this.props.onRouteChange('home');
     	console.log('State: ', this.state);
     }	
@@ -498,11 +621,7 @@ onSubmitClick = () => {
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                <input onChange={this.onProducerChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="producer"  id="producer" placeholder="Who released it?"/>
-				              </div>
-				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
-				                <input onChange={this.onYearChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="year"  id="year" placeholder="When was it released?"/>
-				              </div>
+				              </div>				              
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="variant">Variant/Colorway</label>
 				                <input onChange={this.onVariantChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="variant"  id="variant" placeholder="What variant is this?"/>
@@ -511,10 +630,19 @@ onSubmitClick = () => {
 				                <label className="db fw6 lh-copy f6" htmlFor="about">Write anything you want about the pin </label>
 		        				<input type='text' id='about' onChange={this.onAboutChange} className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100' />
 		        			  </div>
+		        			  <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
+				                Day: <input onChange={this.onDayChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="day"  id="day" placeholder="Day?"/>
+				                Month: <input onChange={this.onMonthChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="month"  id="month" placeholder="Month?"/>				                
+				                Year: <input onChange={this.onYearChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="year"  id="year" placeholder="Year?"/>
+				              </div>
 				              <div className="mt3 center">
 				              	<table className='center pintable'>
 				              		<tbody>
 				              			<tr>
+				              				<td align='center'>
+				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Drop Price</label>
+				              				</td>
 				              				<td align='center'>
 				              					<label className="db fw6 lh-copy f6" htmlFor="pinno">Pin #</label>
 				              				</td>
@@ -530,6 +658,9 @@ onSubmitClick = () => {
 			              				</tr>
 			              				<tr>
 			              					<td align='center'>
+			              						<input onChange={this.onDropChange} className="pa2 input-reset ba bg-transparent hover-white w-100" type="text" name="drop"  id="drop" />
+				              				</td>
+			              					<td align='center'>
 			              						<input onChange={this.onPinNoChange} className="pa2 input-reset ba bg-transparent hover-white w-100" type="text" name="pinno"  id="pinno" />
 				              				</td>
 				              				<td align='center'>
@@ -543,6 +674,9 @@ onSubmitClick = () => {
 							              	</td>
 			              				</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		<label className="db fw6 lh-copy f6" htmlFor="nsfw">NSFW</label>
+							              	</td>
 							              	<td align='center'>
 							              		<label className="db fw6 lh-copy f6" htmlFor="glow">Glow</label>
 							              	</td>
@@ -557,6 +691,9 @@ onSubmitClick = () => {
 							              	</td>
 						              	</tr>
 						              	<tr>
+						              		<td align='center'>
+							              		<input onChange={this.onNsfwChange} className="" type="checkbox" name="nsfw"  id="nsfw" />
+							              	</td>
 							              	<td align='center'>
 							              		<input onChange={this.onGlowChange} className="" type="checkbox" name="glow"  id="glow" />
 							              	</td>
@@ -644,11 +781,7 @@ onSubmitClick = () => {
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                {this.state.producer}
-				              </div>
-				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
-				                {this.state.year}
-				              </div>
+				              </div>				              
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="variant">Variant/Colorway</label>
 				                {this.state.variant}
@@ -657,6 +790,10 @@ onSubmitClick = () => {
 				                <label className="db fw6 lh-copy f6" htmlFor="about">About</label>
 		        				{this.state.about}
 		        			  </div>
+		        			  <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
+				                Day: {this.state.day} Month: {this.state.month} Year: {this.state.year}
+				              </div>
 				              <div className="mt3 center divblock">
 				              	<table className='center pintable'>
 				              		<tbody align='center'>
@@ -730,24 +867,35 @@ onSubmitClick = () => {
 		                			<div className='ba'>
 		                				<img alt='preview' src={imgURL} />
 		                			</div>
-		                			<div id='backimg'>
-		                				<label className='db fw6 lh-copy f6'>Image of Back</label>
-			                			<div className='ba' >
-			                				<img alt='' src={backURL} />
+		                			{backURL != ''
+		                				?<div id='backimg'>
+			                				<label className='db fw6 lh-copy f6'>Image of Back</label>
+				                			<div className='ba' >
+				                				<img alt='' src={backURL} />
+				                			</div>
 			                			</div>
-		                			</div>
-		                			<div id='glowimg'>
-		                				<label className='db fw6 lh-copy f6'>Image of Glow</label>
-			                			<div className='ba' >
-			                				<img alt='' src={glowURL} />
-			                			</div>
-		                			</div>
-		                			<div id='uvimg'>
-			                			<label className='db fw6 lh-copy f6'>Image of UV</label>
-			                			<div className='ba'>
-			                				<img alt='' src={uvURL} />
-			                			</div>
-		                			</div>
+		                				:<div />
+
+		                			}
+		                			
+		                			{glowURL != ''
+			                			?<div id='glowimg'>
+			                				<label className='db fw6 lh-copy f6'>Image of Glow</label>
+				                			<div className='ba' >
+				                				<img alt='' src={glowURL} />
+				                			</div>
+			                			 </div>
+			                			:<div />
+		                			}
+		                			{uvURL != ''
+			                			?<div id='uvimg'>
+				                			<label className='db fw6 lh-copy f6'>Image of UV</label>
+				                			<div className='ba'>
+				                				<img alt='' src={uvURL} />
+				                			</div>
+			                			 </div>
+			                			:<div />
+			                		}
 		                	
 		                <Items entries={this.state.categories} />			
 	        		</td>
@@ -790,11 +938,7 @@ onSubmitClick = () => {
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="producer">Publisher</label>
 				                <input onChange={this.onProducerChange} value={this.state.producer} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="producer"  id="producer" placeholder="Who released it?"/>
-				              </div>
-				              <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
-				                <input onChange={this.onYearChange} value={this.state.year} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="year"  id="year" placeholder="When was it released?"/>
-				              </div>
+				              </div>				              
 				              <div className="mt3">
 				                <label className="db fw6 lh-copy f6" htmlFor="variant">Variant/Colorway</label>
 				                <input onChange={this.onVariantChange} value={this.state.variant} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="variant"  id="variant" placeholder="What variant is this?"/>
@@ -803,6 +947,12 @@ onSubmitClick = () => {
 				                <label className="db fw6 lh-copy f6" htmlFor="about">Write anything you want about the pin </label>
 		        				<input type='text' id='about' onChange={this.onAboutChange} value={this.state.about} className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100' />
 		        			  </div>
+		        			  <div className="mt3">
+				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
+				                Day: <input onChange={this.onDayChange} value={this.state.day} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="day"  id="day" placeholder="Day?"/>
+				                Month: <input onChange={this.onMonthChange} value={this.state.month} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="month"  id="month" placeholder="Month?"/>				                
+				                Year: <input onChange={this.onYearChange} value={this.state.year} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="year"  id="year" placeholder="Year?"/>
+				              </div>
 				              <div className="mt3 center">
 				              	<table className='center pintable'>
 				              		<tbody>
@@ -875,24 +1025,24 @@ onSubmitClick = () => {
 	        				                  		
 		                			<label className='db fw6 lh-copy f6'>Image of Pin</label>
 		                			<div className='ba'>
-		                			<FileUpload sendData={this.getImgData} />
+		                			<FileUpload getState={this.state} sendData={this.getImgData} />
 		                			</div>
 		                			<div id='backimg'>
 		                				<label className='db fw6 lh-copy f6'>Image of Back</label>
 			                			<div className='ba' >
-			                				<FileUpload sendData={this.getBackImgData} />
+			                				<FileUpload getBackState={this.state} sendData={this.getBackImgData} />
 			                			</div>
 		                			</div>
 		                			<div id='glowimg' style={{display: 'none'}}>
 		                				<label className='db fw6 lh-copy f6'>Image of Glow</label>
 			                			<div className='ba' >
-			                				<FileUpload sendData={this.getGlowImgData} />
+			                				<FileUpload getGlowState={this.state} sendData={this.getGlowImgData} />
 			                			</div>
 		                			</div>
 		                			<div id='uvimg' style={{display: 'none'}}>
 			                			<label className='db fw6 lh-copy f6'>Image of UV</label>
 			                			<div className='ba'>
-			                				<FileUpload sendData={this.getUvImgData} />
+			                				<FileUpload getUvState={this.state} sendData={this.getUvImgData} />
 			                			</div>
 		                			</div>
 		                	

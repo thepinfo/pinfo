@@ -3,7 +3,7 @@ import logo from './img/logo.png';
 import './Navigation.css';
 
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
+const Navigation = ({ onRouteChange, isSignedIn, user }) => {
 	if (isSignedIn) {
 		return (
 			<div>
@@ -17,8 +17,12 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 							<li><p onClick={() => onRouteChange('myprofile')} className='f3 link dim black pointer'>My Profile</p></li>
 							<li><p onClick={() => onRouteChange('search')} className='f3 link dim black pointer'>**Search**</p></li>
 							<li><p onClick={() => onRouteChange('allartists')} className='f3 link dim black pointer'>**Artists**</p></li>
-							<li><p className='f3'>** means WIP</p></li>					
-							<li><p onClick={() => onRouteChange('signout')} className='f3 pb2 link dim black pointer'>Sign Out</p></li>					
+							<li><p style={{color: '#FF0000'}} className='f3'>**means WIP**</p></li>					
+							<li><p onClick={() => onRouteChange('signout')} className='f3 pb2 link dim black pointer'>Sign Out</p></li>
+							{user.id === 1
+								?<li><p onClick={() => onRouteChange('register')} className='f3 pb2 link dim black pointer'>Register</p></li>
+								:<div />
+							}					
 						</ul>
 					</nav>
 				</header>
@@ -39,8 +43,8 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 					<nav>
 						<a href="#" id="menu-icon"></a>
 						<ul>
-							<li><p onClick={() => onRouteChange('Signin')} className='f3 link dim black underline pa3 pointer current'>Sign In</p></li>
-							<li><p onClick={() => onRouteChange('register')} className='f3 link dim black underline pa3 pointer'>Register</p></li>					
+							<li><p onClick={() => onRouteChange('allartists')} className='f3 link dim black underline pa3 pointer current'>All Artists</p></li>
+							<li><p onClick={() => onRouteChange('Signin')} className='f3 link dim black underline pa3 pointer current'>Sign In</p></li>												
 						</ul>
 					</nav>
 				</header>

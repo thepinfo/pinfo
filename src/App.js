@@ -160,7 +160,7 @@ class App extends Component {
         />*/}
         <div className='top'>
           {/*<Logo /> */} 
-          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+          <Navigation isSignedIn={isSignedIn} user={this.state.user} onRouteChange={this.onRouteChange} />
         </div>
         {route==='home' 
           ? <div className='contentdiv'> <MySubmissions route={this.state.route} user={this.state.user} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />

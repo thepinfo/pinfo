@@ -179,14 +179,16 @@ render() {
                             :<div></div>                            
                           }       
                           <br />
+                          
 
+                          <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div>
                       */                      
                       pin.map((row, i) => {
                         console.log('row',row)
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 w-50 mv2 shadow-5 center inline' key={i}>
                           <div className='center top-row'>
-                          <label className='fw6 b'>Name</label>
-                          <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div></div>
+                          <label className='fw6 b'>Name</label>                          
+                          </div>
                           {row.name}<br />
                           <label className='fw6 b'>Artist</label> <br /> {row.artist}<br />                          
                           <label className='fw6 b'>Publisher</label> <br /> {row.producer}<br />                          
