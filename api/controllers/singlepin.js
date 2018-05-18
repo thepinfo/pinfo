@@ -1,8 +1,8 @@
  const handleSinglePin = (req, res) => {
- const {pg, Client} = require('pg');
+ const {pg, Client} = require('pg')
 
- 	const { pinid } = req.body;
- 	console.log('pinid',pinid);
+ 	const { pinid } = req.body
+ 	console.log('pinid',pinid)
 
 /*const pool = new pg.Pool({
     port: 5432,
@@ -29,7 +29,7 @@ client.query(text,values, (err, table) => {
   client.end()
   return res.json(table)
 })
-  
+}  
 
 module.exports = {
 	handleSinglePin
