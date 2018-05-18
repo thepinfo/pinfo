@@ -28,16 +28,20 @@ const values = [pinid,'on'];
   if(err) {
     return console.log(err);
   } else {*/
-    client.query(text,values, (err, table) => {
+    /*client.query(text,values, (err, table) => {
       if(err) {
         return console.log(err)
         client.end()      
       }else{
       	console.log(text,values)
         console.log(table)
-        client.end()
-        return res.json(table)
+        
       }
+    })*/
+    client.query(text,values, (err, table) => {
+      console.log(err, res)
+      client.end()
+      return res.json(table)
     })
   /*}
 })
