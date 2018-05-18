@@ -35,7 +35,7 @@ const values = [userid,'on'];
       return res.json(table)
     })
     }  
-}
+
 
 module.exports = {
 	handleMySubmissions
