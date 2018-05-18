@@ -30,6 +30,14 @@ const db = knex({
   }
 });
 
+const pool = new pg.Pool({
+    port: 5432,
+    host : '127.0.0.1',
+    user : 'pinfo',
+    password : 'pinfodb',
+    database : 'pinfo'
+});
+
 
 
 const app = express();
@@ -46,7 +54,9 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
-app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, db) })
+
+
+app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, pool) })
 
 app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, db) })
 
