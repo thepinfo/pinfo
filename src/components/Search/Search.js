@@ -2,7 +2,6 @@
 
 import React from 'react';
 import './Search.css';
-//var rows = {};
 var rows = [];
 
 class Search extends React.Component {

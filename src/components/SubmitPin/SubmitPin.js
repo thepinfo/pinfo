@@ -529,6 +529,22 @@ onSubmitClick = () => {
 	        //console.log(body);
 	      });
 
+	      fetch('http://104.236.62.203:3000/entries', {
+	        method: 'POST',
+	        headers : { 
+	        'Content-Type': 'application/json',
+	        'Accept': 'application/json'
+	       },
+	        body: JSON.stringify({
+	          userid: this.props.user.id	          
+	        })
+	      })        
+	      .then(function(response) {
+	        return response.json()
+	      }).then(function(body) {
+	        //console.log(body);
+	      });
+
 	      
 	    setTimeout(function() {
 	    	this.setState({

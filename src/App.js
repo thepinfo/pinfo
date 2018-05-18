@@ -280,13 +280,10 @@ class App extends Component {
             )
         }
         {route==='search' 
-          ? <div className='contentdiv'>
-              <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          ? <div className='contentdiv'>            
               
-              {/*<DisplayPin imageUrl={imageUrl} />
-              <FaceRecognition />
-                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
-              
+              {/*
+                 <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />              
               */}
             </div>
           : (
