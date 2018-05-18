@@ -1,17 +1,9 @@
- const handleMyProfile = (req, res) => {
+ const handleMyProfile = (req, res, pool) => {
  	const pg = require('pg');
 
  	const { userid } = req.body;
  	console.log('userid',userid);
 
-
-const pool = new pg.Pool({
-    port: 5432,
-    host : '127.0.0.1',
-    user : 'pinfo',
-    password : 'pinfodb',
-    database : 'pinfo'
-});
 
 const text = 'SELECT * from users WHERE id = $1 and entries >= $2';
 const values = [userid, 0];

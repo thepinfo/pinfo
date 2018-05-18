@@ -1,16 +1,8 @@
- const handleSingleArtist = (req, res) => {
+ const handleSingleArtist = (req, res, pool) => {
  	const pg = require('pg');
 
  	const { artist } = req.body;
  	console.log('artist',artist);
-
-const pool = new pg.Pool({
-    port: 5432,
-    host : '127.0.0.1',
-    user : 'pinfo',
-    password : 'pinfodb',
-    database : 'pinfo'
-});
 
 const text = 'SELECT * FROM pins WHERE artist = $1 and mine = $2 and deleted is null';
 const values = [artist,'on'];

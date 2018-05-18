@@ -54,27 +54,26 @@ app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
+app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 
 
 app.post('/mysubmissions', (req, res) => { mysubmissions.handleMySubmissions(req, res, pool) })
 
-app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, db) })
+app.post('/singlepin', (req, res) => { singlepin.handleSinglePin(req, res, pool) })
 
-app.post('/allartists', (req, res) => { allartists.handleAllArtists(req, res, db) })
+app.post('/allartists', (req, res) => { allartists.handleAllArtists(req, res, pool) })
 
-app.post('/singleartist', (req, res) => { singleartist.handleSingleArtist(req, res, db) })
+app.post('/singleartist', (req, res) => { singleartist.handleSingleArtist(req, res, pool) })
 
-app.post('/search', (req, res) => { search.handleSearch(req, res, db) })
+app.post('/search', (req, res) => { search.handleSearch(req, res, pool) })
 
-app.post('/myprofile', (req, res) => { myprofile.handleMyProfile(req, res, db) })
+app.post('/myprofile', (req, res) => { myprofile.handleMyProfile(req, res, pool) })
 
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
 
-app.put('/image', (req, res) => { image.handleImage(req, res, db) })
+app.put('/deletepin', (req, res) => { deletepin.handleDeletePin(req, res, pool) })
 
-app.put('/deletepin', (req, res) => { deletepin.handleDeletePin(req, res, db) })
-
-app.post('/entries', (req, res) => { entries.handleEntries(req, res, db) })
+app.post('/entries', (req, res) => { entries.handleEntries(req, res, pool) })
 
 
 
