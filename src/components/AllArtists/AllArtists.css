@@ -1,5 +1,11 @@
 .artistcard {
-	font-size: 2vh;	
+	font-size: 2vh;
+	color: lightgrey;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;	
 }
 
 

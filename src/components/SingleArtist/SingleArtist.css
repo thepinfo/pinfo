@@ -1,5 +1,7 @@
 @media screen and (min-width: 480px) {    
-    .singleartistwcontrol {width:45%;}
+    .singleartistwcontrol {
+    	width:22%;
+    }
     .pincard:hover {
       transform: scale(1.03,1.03);
     }
@@ -7,4 +9,13 @@
 
 @media screen and (max-width: 479px) {    
     .singleartistwcontrol {width:60%;}
+}
+
+.singleartistname {
+	color: lightgrey;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;	
 }

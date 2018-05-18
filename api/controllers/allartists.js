@@ -12,8 +12,8 @@
     database : 'pinfo'
 });*/
 
-const text = 'SELECT DISTINCT artist from pins WHERE userid = $1 and mine = $2 and deleted is null';
-const values = [1,'on'];
+const text = 'SELECT DISTINCT artist from pins WHERE userid = $1 and mine = $2 and artist != $3 and deleted is null';
+const values = [1,'on',''];
 
 const client = new Client({
   port: 5432,

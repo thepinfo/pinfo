@@ -184,10 +184,8 @@ render() {
                           <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div>
                       */                      
                       pin.map((row, i) => {
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 pincard shadow-5 center inline' key={i}>
-                          <div className='center top-row f5'>
-                          <label className='fw6 b'>Name</label>                          
-                          </div>
+                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 pincard singlepincard shadow-5 center inline' key={i}>                          
+                          <label className='fw6 b'>Name</label><br />
                           {row.name}<br />
                           <label className='fw6 b'>Artist</label> <br /> {row.artist}<br />                          
                           <label className='fw6 b'>Publisher</label> <br /> {row.producer}<br />                          
