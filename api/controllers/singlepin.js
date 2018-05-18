@@ -14,10 +14,12 @@ pool.connect((err, db, done) => {
   } else {
     db.query(text,values, (err, table) => {
       if(err) {
-        return console.log(err)      
+        return console.log(err)
+        pool.end()      
       }else{
       	console.log(text,values)
         console.log(table)
+        pool.end()
         return res.json(table)
       }
     })
