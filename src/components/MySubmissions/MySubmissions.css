@@ -12,8 +12,17 @@
 }
 
 .cardimg {
-	width: 50%;
-	height: 50;
+	width: 750%;
+}
+
+
+.artist {
+  color: lightgrey;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 
@@ -60,8 +69,21 @@
     .pincard:hover {
       transform: scale(1.03,1.03);
     }
+    .cardtext {
+      max-width: 70%;
+    }
+    .pincard{
+      font-size: 2vh;
+    }
 }
 
 @media screen and (max-width: 479px) {    
-    .wcontrol {width:60%;}
+    .wcontrol {width:80%;}
+    .cardtext {
+      max-width: 75%;
+    }
+    .pincard{
+      font-size: 2vh;  
+      min-width: 60%;
+    }
 }

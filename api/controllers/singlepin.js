@@ -12,6 +12,10 @@
     database : 'pinfo'
 });*/
 
+
+const text = 'SELECT * from pins WHERE id = $1 and mine = $2';
+const values = [pinid,'on'];
+
 const client = new Client({
   port: 5432,
   host : '127.0.0.1',
@@ -20,9 +24,6 @@ const client = new Client({
   database : 'pinfo'
 })
 client.connect()
-
-const text = 'SELECT * from pins WHERE id = $1 and mine = $2';
-const values = [pinid,'on'];
 
 client.query(text,values, (err, table) => {
   console.log(err, table)

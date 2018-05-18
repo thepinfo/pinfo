@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const pg = require('pg');
+const Client = require('pg');
 const corsPrefetch = require('cors-prefetch-middleware')
 const imagesUpload = require('images-upload-middleware');
 

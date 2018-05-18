@@ -86,7 +86,7 @@ pincardClick = (e) => {
 handleClick = (e, row) => {
     // access to e.target here
     if( isMobile.any() ){
-     alert('Mobile')
+     //alert('Mobile')
     }else{
      //console.log(row.artist);
     }
@@ -143,7 +143,7 @@ render() {
 
                       */                      
                       rows.map((row, i) => {                        
-                          return <div className='equalHMR eq artistwcontrol r3 ba b--black-10 mv2 shadow-5 center inline pincard' id='pincard' value={row.artist} onClick={((e) => this.handleClick(e, row))} key={i}>
+                          return <div className='equalHMR eq artistwcontrol r3 ba b--black-10 mv2 shadow-5 center inline artistcard' id='artistcard' value={row.artist} onClick={((e) => this.handleClick(e, row))} key={i}>
                           <label className='f3 b'>{row.artist}</label>
                           </div>;
                       })

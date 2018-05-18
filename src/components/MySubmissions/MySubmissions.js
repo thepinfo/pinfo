@@ -94,7 +94,7 @@ forceUpdateHandler(){
 handleClick = (e, row) => {
     // access to e.target here
     if( isMobile.any() ){
-     alert('Mobile')
+     //alert('Mobile')
     }else{
      //console.log(row.id);
     }
@@ -195,12 +195,13 @@ render() {
 
                       */                      
                       rows.map((row, i) => {                        
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw6 shadow-5 center inline pincard' id='pincard' value={row.id} onClick={((e) => this.handleClick(e, row))} key={i}>
-                          <div className='center top-row'>
-                          <label className='fw6 b'>Name</label>
+                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw8 shadow-5 center inline pincard' id='pincard' value={row.id} onClick={((e) => this.handleClick(e, row))} key={i}>
+                          <div className='center top-row'>                          
                           <div className='icons'><img onClick={((e) => this.delClick(e, row))} src={del} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div></div>
-                          {row.name}<br />
-                          Artist: {row.artist}<br />                          
+                          <div className='cardtext b center'>
+                          {row.name}<br /></div>
+                          <label className='artist'>{row.artist}</label><br /> 
+                                                   
                           <img className='cardimg' src={'http://104.236.62.203:3000/public/' + row.imgname + '.jpg'} />
                                             
                           </div>;

@@ -1,15 +1,15 @@
-.pincard {
-	white-space: nowrap
+.artistcard {
+	font-size: 2vh;	
 }
 
 
 @media screen and (min-width: 480px) {    
     .artistwcontrol {width:45%;}
-    .pincard:hover {
+    .artistcard:hover {
       transform: scale(1.03,1.03);
     }
 }
 
 @media screen and (max-width: 479px) {    
-    .artistwcontrol {width:60%;}
+    .artistwcontrol {width:80%;}
 }

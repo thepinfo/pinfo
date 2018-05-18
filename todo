@@ -12,15 +12,15 @@ xxxxspin up droplet
 xxxxlaunch server
 xxxxlaunch database
 xxxxlaunch app beta
-----terms of service
 ----logo as link
 
 
-
+&&--Public Facing--&&
 ----Security of file submission and form handling
 ----security of server
 ----sharing links/profiles/boards
 ----email confirmation
+----terms of service
 
 
 
@@ -33,7 +33,11 @@ x---my profile {messaging system, my pinpals, my boards}
 xx--navigation extensible components for search, artist profiles, categories, my profile
 ----make a board
 
+
+
+
 **^*^*$$%% Components in Progress %%$$*^*^**
+
 &&^^& Submit a Pin &^^&&
 xxxxsay something about this pin
 xxxxif no image pass none
@@ -41,17 +45,18 @@ xxxxBack of pin
 xxxxpin submission confirmation page
 ----If no image set for back/glow/uv don't display preview on confirm
 xxxxclear all state after submit!!!!
-----NSFW, Drop Price
+xx--NSFW, Drop Price
 ----cancel pic if needed
 ----go back to edit and change pic
 ----Online or event drop
 xxxxYear -> release date selector
 
+
+
 &&^^& My Submissions &^^&&
 ---- Add a third 2 column responsive break
----- Edit/delete my pin
+xx-- Edit/delete my pin
 ---- only show edit/delete on my pins
-
 
 
 
@@ -60,3 +65,8 @@ $$$$$$$$---Mobile---$$$$$$$$
 ----text shrink to fit container
 ----containers 80%? 
 ----Margin on submit form
+
+
+
+!!!!!!!---Important---!!!!!!!
+----No registration if username/email is already taken

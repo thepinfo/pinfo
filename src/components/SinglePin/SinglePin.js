@@ -105,7 +105,7 @@ class SinglePin extends React.Component {
           //that.forceUpdate();
           //console.log(that.state)
         });        
-        alert(that.props.route);
+        //alert(that.props.route);
         if(that.props.route == 'home'){
           //console.log('routing to MySubmissions')
           setTimeout(function() { this.props.onRouteChange('mysubmissions'); }.bind(this), 500);
@@ -184,8 +184,8 @@ render() {
                           <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div>
                       */                      
                       pin.map((row, i) => {
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 w-50 mv2 shadow-5 center inline' key={i}>
-                          <div className='center top-row'>
+                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 pincard shadow-5 center inline' key={i}>
+                          <div className='center top-row f5'>
                           <label className='fw6 b'>Name</label>                          
                           </div>
                           {row.name}<br />
