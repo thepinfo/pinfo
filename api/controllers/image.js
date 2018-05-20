@@ -1,31 +1,32 @@
  const handleImage = (req, res, db) => {
- 	/*const knex = require('knex');
- 	const db = knex({
-	  client: 'pg',
-	  connection: {
-	    host : '127.0.0.1',
-	    user : 'pinfo',
-	    password : 'pinfodb',
-	    database : 'pinfo'
-	  }
-	});*/
+ 	const {pg,Client} = require('pg'); 	
  	const { name, artist, producer, year, month, day, nsfw, drop, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories, submitted } = req.body;
- 	
- 	/*const { email, name, password } = req.body;
-	if (!email || !name || !password) {
-		return res.status(400).json('Invalid form submission');
-	}*/
 
-	/*const { id } = req.body;
-	db('users').where('id', '=', id)
-	.increment('entries', 1)
-	.returning('entries')
-	.then(entries => {
-		res.json(entries[0]);
+ 	const client = new Client({
+	  port: 5432,
+	  host : '127.0.0.1',
+	  user : 'pinfo',
+	  password : 'pinfodb',
+	  database : 'pinfo'
 	})
-	.catch(err => res.status(400).json('unable to get entries'))
-*/	//console.log(req);
-	db.transaction(trx => {
+	client.connect()
+
+	const text = 'INSERT INTO pins (name, artist, producer, year, month, day, nsfw, drop, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories, submitted) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24';
+	const values = [name, artist, producer, year, month, day, nsfw, drop, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories, submitted];
+
+	client.query(text,values, (err, table) => {
+      console.log(err, table)
+      client.end()
+      return res.json(table)
+    })
+    }
+}
+
+module.exports = {
+	handleImage
+}
+
+/*db.transaction(trx => {
 			trx.insert({
 				name: name,				
 				artist: artist,
@@ -61,9 +62,4 @@
 		  console.error(error);
 		})
 		
-			.catch(err => res.status(400).json(err))
-}
-
-module.exports = {
-	handleImage
-}
+			.catch(err => res.status(400).json(err))*/
