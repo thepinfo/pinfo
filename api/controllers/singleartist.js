@@ -4,7 +4,7 @@
  	const { artist } = req.body;
  	console.log('artist',artist);
 
-const text = 'SELECT * FROM pins WHERE artist = $1 and mine = $2 and deleted is null';
+const text = 'SELECT * FROM pins WHERE artist::text like _$1_ and mine = $2 and deleted is null';
 const values = [artist,'on'];
 
 const client = new Client({
