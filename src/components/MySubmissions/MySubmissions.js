@@ -75,9 +75,9 @@ class MyPins extends React.Component {
         rows = body.rows;   
         //this.setState({rows: body.rows});      
         //console.log('rows',rows)
-      }).then(function() {
+      })/*.then(function() {
         //console.log('rows 2',rows)
-      });
+      });*/
 
       
       //this.setState = { loaded: 'on' };

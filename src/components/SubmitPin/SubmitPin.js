@@ -525,9 +525,9 @@ onSubmitClick = () => {
 	      })        
 	      .then(function(response) {
 	        return response.json()
-	      }).then(function(body) {
+	      })/*.then(function(body) {
 	        //console.log(body);
-	      });
+	      });*/
 
 	      fetch('http://104.236.62.203:3000/entries', {
 	        method: 'POST',
@@ -541,9 +541,9 @@ onSubmitClick = () => {
 	      })        
 	      .then(function(response) {
 	        return response.json()
-	      }).then(function(body) {
+	      })/*.then(function(body) {
 	        //console.log(body);
-	      });
+	      });*/
 
 	      
 	    setTimeout(function() {

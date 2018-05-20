@@ -121,7 +121,7 @@ class App extends Component {
     this.setState({input: event.target.value});
   }
 
-  onButtonSubmit = () => {
+  /*onButtonSubmit = () => {
     fetch('http://104.236.62.203:3000/image', {
         method: 'put',
         headers: {'content-Type': 'application/json'},
@@ -133,7 +133,7 @@ class App extends Component {
       .then(count => {
         this.setState(Object.assign(this.state.user, { entries: count}))
       })
-  }
+  }*/
 
   onRouteChange = (route) => {
     //console.log('route',route)
@@ -215,7 +215,7 @@ class App extends Component {
               <SubmitPin
                 user={this.state.user}
                 onInputChange={this.onInputChange} 
-                onButtonSubmit={this.onButtonSubmit}
+                /*onButtonSubmit={this.onButtonSubmit}*/
                 onRouteChange={this.onRouteChange}
               />
               
@@ -282,9 +282,9 @@ class App extends Component {
         {route==='search' 
           ? <div className='contentdiv'>            
               
-              {/*
+              
                  <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />              
-              */}
+              
             </div>
           : (
               route === 'home' 
