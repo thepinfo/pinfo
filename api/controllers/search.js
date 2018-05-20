@@ -16,7 +16,6 @@ const client = new Client({
 client.connect()
 
 const text = 'SELECT * FROM pins WHERE deleted IS NULL';
-const values = [userid,'on'];
 
 client.query(text, (err, table) => {
       console.log(err, table)
