@@ -16,11 +16,17 @@ const client = new Client({
 })
 client.connect()
 
-console.log(client.query(text,values, (err, table) => {
-  console.log(err, table)
+client.query(text,values, (err, table) => {
+  if (err) {
+        console.log('this.sql', this.sql); //command/query
+        console.log(text);
+        console.log("ERROR");
+        console.log(err);
+        return;
+    }
   client.end()
   return res.json(table)
-}))
+})
 } 
 
 module.exports = {
