@@ -1,29 +1,28 @@
  const handleSearch = (req, res, pool) => {
- 	const pg = require('pg');
+ 	const {pg,Client} = require('pg');
 
  	/*const { userid } = req.body;
  	console.log('userid',userid);*/
 
 
 
-/*const text = 'SELECT * from pins WHERE userid <> $1 and mine = $2';
-const values = [1,'on'];*/
-
-pool.connect((err, db, done) => {
-  if(err) {
-    return console.log(err);
-  } else {
-    db.query('SELECT * from pins', (err, table) => {
-      if(err) {
-        return console.log(err)      
-      }else{
-      	//console.log(text)
-        console.log(table)
-        return res.json(table)
-      }
-    })
-  }
+const client = new Client({
+  port: 5432,
+  host : '127.0.0.1',
+  user : 'pinfo',
+  password : 'pinfodb',
+  database : 'pinfo'
 })
+client.connect()
+
+const text = 'SELECT * FROM pins WHERE deleted IS NULL';
+const values = [userid,'on'];
+
+client.query(text, (err, table) => {
+      //console.log(err, table)
+      client.end()
+      return res.json(table)
+    })
 }
 
 module.exports = {
