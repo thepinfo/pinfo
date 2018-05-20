@@ -1,5 +1,5 @@
- const handleImage = (req, res) => {
- 	const knex = require('knex');
+ const handleImage = (req, res, db) => {
+ 	/*const knex = require('knex');
  	const db = knex({
 	  client: 'pg',
 	  connection: {
@@ -8,7 +8,7 @@
 	    password : 'pinfodb',
 	    database : 'pinfo'
 	  }
-	});
+	});*/
  	const { name, artist, producer, year, month, day, nsfw, drop, variant, pinno, maxno, glow, uv, soldout, damaged, about, file, userid, imgname, backimgname, glowimgname, uvimgname, categories, submitted } = req.body;
  	
  	/*const { email, name, password } = req.body;
