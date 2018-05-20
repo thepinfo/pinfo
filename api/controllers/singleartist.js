@@ -16,11 +16,11 @@ const client = new Client({
 })
 client.connect()
 
-client.query(text,values, (err, table) => {
+console.log(client.query(text,values, (err, table) => {
   console.log(err, table)
   client.end()
   return res.json(table)
-})
+}))
 } 
 
 module.exports = {
