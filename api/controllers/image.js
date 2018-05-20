@@ -20,7 +20,7 @@
       return res.json(table)
     })
     }
-}
+
 
 module.exports = {
 	handleImage
