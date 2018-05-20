@@ -1,6 +1,9 @@
 @media screen and (min-width: 480px) {    
     .singleartistwcontrol {
-    	width:22%;
+    	min-width:170px;
+    }
+    .cardimg{
+        min-width: 150px;
     }
     .pincard:hover {
       transform: scale(1.03,1.03);
@@ -8,7 +11,9 @@
 }
 
 @media screen and (max-width: 479px) {    
-    .singleartistwcontrol {width:60%;}
+    .singleartistwcontrol{
+        width:80%;
+    }
 }
 
 .singleartistname {

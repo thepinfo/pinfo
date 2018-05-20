@@ -15,6 +15,11 @@ xxxxlaunch app beta
 ----logo as link
 
 
+*&*--Layout--*&*
+----Link back to artist from single pin if route=singleartist
+----change all vh to em
+
+
 &&--Public Facing--&&
 ----Security of file submission and form handling
 ----security of server
@@ -47,7 +52,7 @@ xxxxpin submission confirmation page
 xxxxclear all state after submit!!!!
 xx--NSFW, Drop Price
 ----cancel pic if needed
-----go back to edit and change pic
+xxxxgo back to edit and change pic
 ----Online or event drop
 xxxxYear -> release date selector
 
@@ -56,7 +61,7 @@ xxxxYear -> release date selector
 &&^^& My Submissions &^^&&
 ---- Add a third 2 column responsive break
 xx-- Edit/delete my pin
----- only show edit/delete on my pins
+xxxx only show edit/delete on my pins
 
 
 
@@ -65,8 +70,11 @@ $$$$$$$$---Mobile---$$$$$$$$
 ----text shrink to fit container
 ----containers 80%? 
 ----Margin on submit form
+----on click link hide menu
 
 
 
 !!!!!!!---Important---!!!!!!!
 ----No registration if username/email is already taken
+----case sensitivity
+xxxxsubmitting twice

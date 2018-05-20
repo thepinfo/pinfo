@@ -59,7 +59,6 @@ header {
       justify-content: space-between;
     }*/
     .contentdiv {
-      padding-top: 50px;
     }
 
     .submitdiv {
@@ -73,11 +72,15 @@ header {
 }
 
 @media screen and (max-width: 479px) {
+  .top {
+    margin-bottom: 20px;
+    height: 100px;
+  }
+  
   header {
     height:100px;
   } 
   .contentdiv {
-    padding-top: 20px;
   }
 
   .icon {
