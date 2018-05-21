@@ -110,10 +110,10 @@ app.post('/upload', (req, res, next) => {
   let imageFile = req.files.file;
   console.log('imageFile: ',imageFile);  
   imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
+    console.log('Log res',res)
+    console.log('log files',req.files)
     if (err) {
-      console.log('Log err',err)
-      console.log('Log res',res)
-      console.log('log files',req.files)
+      console.log('Log err',err)      
       return res.status(500).send(err);
     }
 
