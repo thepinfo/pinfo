@@ -399,7 +399,7 @@ onSubmitClick = () => {
        
   }
 
-  onSubmitPin = () => {  	
+  onSubmitPin = (e) => {  	
   	//ASK IF THIS IS CORRECT AND THEN SUBMIT IMAGE/DATA TO THE DATABASE
   		
 
@@ -605,7 +605,7 @@ onSubmitClick = () => {
 	    //this.props.onRouteChange('home');
     	//console.log('State: ', this.state);
     	
-    	
+    	e.preventDefault();
   }
 
 
@@ -1095,7 +1095,7 @@ onSubmitClick = () => {
 	        	<tr>
 	        		<td>	        			
 	        			<div className="">
-			                <input onClick={this.onSubmitClick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />
+			                <input onClick={(e) => {this.SubmitClick(e)}} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />
 			            </div>	
 		            </td>
 	            </tr>	
