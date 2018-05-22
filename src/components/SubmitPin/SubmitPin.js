@@ -932,7 +932,7 @@ onSubmitClick = () => {
 	        	<tr>
 	        		<td>	        			
 		                <input onClick={this.onEditClick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Edit" />		                   			
-		                <input onClick={this.onSubmitPin} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />		          
+		                <input onClick={(e) => {this.onSubmitPin(e)}} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />		          
 		                <input onClick={this.onExitClick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Exit" />			          	
 		            </td>
 	            </tr>	
@@ -1095,7 +1095,7 @@ onSubmitClick = () => {
 	        	<tr>
 	        		<td>	        			
 	        			<div className="">
-			                <input onClick={(e) => {this.SubmitClick(e)}} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />
+			                <input onClick={(e) => {this.onSubmitPin(e)}} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="button" value="Submit Pin" />
 			            </div>	
 		            </td>
 	            </tr>	
