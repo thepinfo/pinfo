@@ -11,6 +11,7 @@ import MySubmissions from './components/MySubmissions/MySubmissions';
 import MyProfile from './components/MyProfile/MyProfile';
 import Search from './components/Search/Search';
 import SinglePin from './components/SinglePin/SinglePin';
+import EditPin from './components/EditPin/EditPin';
 import AllArtists from './components/AllArtists/AllArtists';
 import SingleArtist from './components/SingleArtist/SingleArtist';
 //import Stats from './components/Stats/Stats';
@@ -49,6 +50,38 @@ const initialState = {
       isSignedIn: false,
       singlePinId: '',
       singleArtist:'',
+      edit: {
+        name: '',
+        artist: '',
+        producer: '',
+        year: '',
+        day: '',
+        month: '',
+        variant: '',
+        pinno: '',
+        maxno: '',
+        open: '',
+        glow: '',
+        uv: '',
+        mod: '',
+        soldout:'',
+        damaged:'',
+        about: '',
+        categories: [],
+        items: [],
+        tagtype: '',
+        file: '',
+        backfile: '',
+        glowfile: '',
+        uvfile: '',
+        imgURL:'',
+        backURL:'',
+        glowURL:'',
+        uvURL:'',
+        nsfw: '',
+        drop: '',
+        submitted: ''
+      },
       user: {
         id: '',
         name: '',
@@ -56,6 +89,7 @@ const initialState = {
         entries: 0,
         joined: ''
       }
+
 } 
 
 class App extends Component {
@@ -148,6 +182,48 @@ class App extends Component {
     this.setState({route: route})
   }
 
+  setEdit = (row) => {
+    this.setState({edit: {
+        name: row.name,
+        artist: row.artist,
+        producer: row.producer,
+        year: row.year,
+        month: row.month,
+        day: row.day,
+        nsfw: row.nsfw,
+        drop: row.drop,
+        variant: row.variant,
+        pinno: row.pinno,
+        maxno: row.maxno,
+        glow: row.glow,
+        uv: row.uv,
+        soldout: row.soldout,
+        damaged: row.damaged,
+        categories: row.categories,
+        about: row.about,
+        userid: row.id,
+        imgname: row.imgname,
+        backimgname: row.backname,
+        glowimgname: row.glowname,
+        uvimgname: row.uvname,        
+        /*file: file,
+        backfile: backfile,
+        glowfile: glowfile,
+        uvfile: uvfile,
+        imgURL: imgURL,
+        backURL: backURL,
+        glowURL: glowURL,
+        uvURL: uvURL,*/
+        submitted: row.now,
+    }})
+     setTimeout(function() { 
+      console.log('edit state', this.state.edit) 
+      console.log('app state', this.state) 
+      this.onRouteChange('editpin')
+       }.bind(this), 500);
+    
+  }
+
 
   
 
@@ -163,7 +239,7 @@ class App extends Component {
           <Navigation isSignedIn={isSignedIn} user={this.state.user} onRouteChange={this.onRouteChange} />
         </div>
         {route==='home' 
-          ? <div className='contentdiv'> <MySubmissions route={this.state.route} user={this.state.user} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
+          ? <div className='contentdiv'> <MySubmissions route={this.state.route} user={this.state.user} setEdit={this.setEdit} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
           
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
@@ -187,7 +263,7 @@ class App extends Component {
             )
         }
         {route==='mysubmissions' 
-          ? <div className='contentdiv'> <MySubmissions user={this.state.user} route={this.state.route} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
+          ? <div className='contentdiv'> <MySubmissions user={this.state.user} setEdit={this.setEdit} route={this.state.route} loadPin={this.loadPin} onRouteChange={this.onRouteChange} />
           
             {/*isSignedIn==='true'
               ?<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
@@ -296,6 +372,26 @@ class App extends Component {
           ? <div className='contentdiv center'>
               <SinglePin
                 pin={this.state.singlePinId}
+                route={this.state.route}
+                onRouteChange={this.onRouteChange}
+              />
+              
+              {/*<DisplayPin imageUrl={imageUrl} />
+              <FaceRecognition />
+                <Stats name={this.state.user.name} entries={this.state.user.entries}/>
+              
+              */}
+            </div>
+          : (
+              route === 'home' 
+              ? <div />
+              : <div />
+            )
+        }
+        {route==='editpin' 
+          ? <div className='contentdiv center'>
+              <EditPin
+                pin={this.state.edit}
                 route={this.state.route}
                 onRouteChange={this.onRouteChange}
               />

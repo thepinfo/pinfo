@@ -10,7 +10,7 @@ const Navigation = ({ onRouteChange, isSignedIn, user }) => {
 				<header className='navheader'>
 				<table>
 				<tr>
-						<img className='logoimg' alt='logo' src={logo}/>
+						<img onClick={() => onRouteChange('home')} className='logoimg' alt='logo' src={logo}/>
 					<td className='centernavtd'>				
 						<nav>						
 							<ul className='nopad'>								
@@ -23,14 +23,14 @@ const Navigation = ({ onRouteChange, isSignedIn, user }) => {
 					<td className='rightnavtd'>
 						<nav className='hidenav rightnav'>
 							<a href="#" id="menu-icon"></a>
-							<ul>							
-								<li className='hideli'><p onClick={() => onRouteChange('submitpin')} className='link dim black pointer'>Submit Pin</p></li>
-								<li className='hideli'><p onClick={() => onRouteChange('myprofile')} className='link dim black pointer'>My Profile</p></li>
+							<ul className='nopad'>							
+								<li className='hideli'><p onClick={() => onRouteChange('submitpin')} className='link dim black pointer nopad'>Submit Pin</p></li>
+								<li className='hideli'><p onClick={() => onRouteChange('myprofile')} className='link dim black pointer nopad'>My Profile</p></li>
 								{user.id === 1
-									?<li className='hideli'><p onClick={() => onRouteChange('register')} className='pb2 link dim black pointer'>Register</p></li>
+									?<li className='hideli'><p onClick={() => onRouteChange('register')} className='pb2 link dim black pointer nopad'>Register</p></li>
 									:<div style={{display:'none'}} />
 								}				
-								<li className='hideli'><p onClick={() => onRouteChange('signout')} className='pb2 link dim black pointer'>Sign Out</p></li>
+								<li className='hideli'><p onClick={() => onRouteChange('signout')} className='pb2 link dim black pointer nopad'>Sign Out</p></li>
 													
 							</ul>
 						</nav>
@@ -51,9 +51,9 @@ const Navigation = ({ onRouteChange, isSignedIn, user }) => {
 		return (
 			<div>
 				<header className='navheader'>						
-					<img className='logoimg' alt='logo' src={logo}/>
+					<img onClick={() => onRouteChange('home')} className='logoimg' alt='logo' src={logo}/>
 					<nav className='centernav'>						
-						<ul className='nopad center'>
+						<ul className='nopad'>
 							<li><p onClick={() => onRouteChange('allartists')} className='link dim black underline pointer current'>Artists</p></li>
 							<li><p onClick={() => onRouteChange('Signin')} className='link dim black underline pointer current'>Sign In</p></li>
 							<li><p onClick={() => onRouteChange('search')} className='link dim black pointer'>Search</p></li>												

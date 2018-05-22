@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './Items.css';
- 
+var listItems = null;
 class TodoItems extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +12,11 @@ class TodoItems extends Component {
       console.log('LogData from List:',this.props.entries)
       this.props.sendData(this.props.entries);
     }*/
+  componentWillMount = () => {
+    var listEntries = this.props.entries;
+    console.log("list entries",listEntries);
+    listItems = listEntries.map(this.createTasks);
+  }
 
   delete = (key) => {
     this.props.delete(key);
@@ -22,8 +27,7 @@ class TodoItems extends Component {
   }
  
   render() {
-    var listEntries = this.props.entries;
-    var listItems = listEntries.map(this.createTasks);
+    
     //console.log('LisEntries:',listEntries)
     //console.log('ListItems:',listItems)
     //this.logData()        

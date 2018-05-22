@@ -46,6 +46,7 @@ class SubmitPin extends React.Component {
       mod: '',
       soldout:'',
       damaged:'',
+      about:'',
       categories: [],
       items: [],
       tagtype: '',
@@ -265,16 +266,14 @@ class SubmitPin extends React.Component {
 onSubmitClick = () => {
 	
 	now = Date.now();
+	if(file != null){
   		imgname = this.props.user.id + '-' + now;
   		//console.log('name: ',imgname);
   		data = new FormData();
 	    data.append('file', file);
 	    data.append('filename', imgname);
-	    
-	if(file == null){
-    	alert('An image is required');
-    }else{
     	imgURL = URL.createObjectURL(file);
+    }
 
 	    if(backfile != null){
 	  		backname = this.props.user.id + '-back-' + now;
@@ -319,7 +318,7 @@ onSubmitClick = () => {
 
 		    this.setState({route: 'confirm'})
     	}.bind(this), 500);
-    }    
+        
   }
 
   
@@ -340,17 +339,17 @@ onSubmitClick = () => {
   }
 
   onEditClick = () => {
-    now = Date.now();
-  		imgname = this.props.user.id + '-' + now;
-  		//console.log('name: ',imgname);
-  		data = new FormData();
-	    data.append('file', file);
-	    data.append('filename', imgname);
-	    
-	if(file == null){
-    	alert('An image is required');
-    }else{
-    	imgURL = URL.createObjectURL(file);
+
+  		if(file != null){
+	  		imgname = this.props.user.id + '-' + now;
+	  		//console.log('name: ',imgname);
+	  		data = new FormData();
+		    data.append('file', file);
+		    data.append('filename', imgname);
+		    
+		
+	    	imgURL = URL.createObjectURL(file);
+	    }
 
 	    if(backfile != null){
 	  		backname = this.props.user.id + '-back-' + now;
@@ -395,7 +394,7 @@ onSubmitClick = () => {
 
 		    this.setState({route: 'edit'}) 
     	}.bind(this), 500);
-    }    
+        
 
        
   }
@@ -405,11 +404,7 @@ onSubmitClick = () => {
   		
 
   		
-  		imgname = this.props.user.id + '-' + now;
-  		//console.log('name: ',imgname);
-  		data = new FormData();
-	    data.append('file', file);
-	    data.append('filename', imgname);
+  		
 
   		
 
@@ -428,18 +423,24 @@ onSubmitClick = () => {
         });     	
 
      	//console.log("file before if: ", file);
-    if(file == null){
-    	alert('An image is required');
-    }else{  		
-
-	    fetch('http://104.236.62.203:3000/upload', {
-	      method: 'POST',
-	      body: data,
-	    }).then((response) => {
-	      response.json().then((body) => {
-	        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
-	      });
-	    });
+    		
+     	if(file != null){
+	    	imgname = this.props.user.id + '-' + now;
+	  		//console.log('name: ',imgname);
+	  		data = new FormData();
+		    data.append('file', file);
+		    data.append('filename', imgname);
+		    fetch('http://104.236.62.203:3000/upload', {
+		      method: 'POST',
+		      body: data,
+		    }).then((response) => {
+		      response.json().then((body) => {
+		        this.setState({ imageURL: `http://104.236.62.203:3000/${body.file}` });
+		      });
+		    });
+		}
+	    
+	    
 
 	    if(backfile != null){
 	    	backname = this.props.user.id + '-back-' + now;
@@ -603,7 +604,7 @@ onSubmitClick = () => {
 	     this.props.onRouteChange('home'); }.bind(this), 500);  
 	    //this.props.onRouteChange('home');
     	//console.log('State: ', this.state);
-    }	
+    	
     	
   }
 

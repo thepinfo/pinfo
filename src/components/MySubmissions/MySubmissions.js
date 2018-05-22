@@ -143,9 +143,9 @@ delClick = (e, row) => {
     
 }
 
-editClick = (e) => {
-    alert('Edi');
-    this.props.onRouteChange('edit');
+editClick = (e, row) => {
+   // this.props.setEdit(row);
+   alert('Work in progress')    
     e.stopPropagation();
 }  
 
@@ -197,7 +197,7 @@ render() {
                       rows.map((row, i) => {                        
                           return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 mw8 shadow-5 center inline pincard' id='pincard' value={row.id} onClick={((e) => this.handleClick(e, row))} key={i}>
                           <div className='center top-row'>                          
-                          <div className='icons'><img onClick={((e) => this.delClick(e, row))} src={del} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div></div>
+                          <div className='icons'><img onClick={((e) => this.delClick(e, row))} src={del} className='fr icon' href='' /><img onClick={((e) => this.editClick(e, row))} src={edit} className='fr icon' href='' /></div></div>
                           <div className='cardtext b center'>
                           {row.name}<br /></div>
                           <label className='artist'>{row.artist}</label><br /> 
