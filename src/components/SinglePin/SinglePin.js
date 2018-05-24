@@ -136,7 +136,6 @@ handleClick = (e, row) => {
     }        
 }*/
 
-
 render() {
   /*var pins = this.state.rows.map(function(rows) {
       return (
@@ -184,13 +183,47 @@ render() {
                           <div className='icons'><img src={del} onClick={((e) => this.delClick(e, row))} className='fr icon' href='' /><img onClick={this.editClick} src={edit} className='fr icon' href='' /></div>
                       */                      
                       pin.map((row, i) => {
-                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 pincard singlepincard shadow-5 center inline' key={i}>                          
+                          return <div className='equalHMR eq wcontrol r3 ba b--black-10 mv2 pincard singlepincard shadow-5 center inline' key={i}>
+                          {row.artist != ''
+                            ?<p onClick={((e) => this.props.goToArtist(e, row))} className='link b dim black pointer underline'>Go to Artist</p>
+                            :<div />
+                          }
                           <label className='fw6 b'>Name</label><br />
                           {row.name}<br />
                           <label className='fw6 b'>Artist</label> <br /> {row.artist}<br />                          
                           <label className='fw6 b'>Publisher</label> <br /> {row.producer}<br />                          
                           <label className='fw6 b'>Variant</label> <br /> {row.variant}<br />                          
-                          <label className='fw6 b'>Year</label> <br /> {row.year}<br />                          
+                          <table>
+                        <tbody>
+                          <tr>
+                            <td colspan='3'>
+                                <label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Day
+                              </td>                           
+                              <td>
+                                Month
+                              </td>
+                              <td>
+                                Year
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                {row.day}
+                              </td>                           
+                              <td>
+                                {row.month}
+                              </td>
+                              <td>
+                                {row.year}
+                              </td>
+                            </tr>   
+                          </tbody>
+                          </table>                          
                           <label className='fw6 b'>Pin #:</label> {row.pinno != ''
                             ?row.pinno
                             :'None '

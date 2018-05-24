@@ -29,7 +29,7 @@ class Search extends React.Component {
 
 
   componentWillMount = (props) => {
-  	console.log("User: ",this.props.user.id);
+  	//console.log("User: ",this.props.user.id);
     fetch('http://104.236.62.203:3000/search', {
       method: 'post',
       headers: {'content-Type': 'application/json'},

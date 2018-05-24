@@ -1,18 +1,19 @@
 Todo:
 
-----Create more specific folders to sort components
-----Form validation
-----Mine marker for pins
 xxxxpin submission handler to database
---xx///pin display for my profile// and for general search
+xxxxpin display for my profile and for general search
 xxxxroute submit pin back to my submissions
-----profile display and edit page
-----Pin edit in my profile
 xxxxspin up droplet
 xxxxlaunch server
 xxxxlaunch database
 xxxxlaunch app beta
-----logo as link
+xxxxlogo as link
+
+----Create more specific folders to sort components
+----Form validation
+----Mine marker for pins
+----profile display and edit page
+xxx-Pin edit in my profile
 
 
 *&*--Layout--*&*
@@ -62,6 +63,11 @@ xxxxYear -> release date selector
 ---- Add a third 2 column responsive break
 xx-- Edit/delete my pin
 xxxx only show edit/delete on my pins
+
+
+
+&&^^& Edit a Pin &^^&&
+----Strip characters for categories and re-implement changing categories.
 
 
 

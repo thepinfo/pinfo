@@ -2,12 +2,12 @@
 
 @media screen and (min-width: 480px) {    
     .editpin {
-	max-width:60%;
-}
+		max-width:60%;
+	}
 }
 
 @media screen and (max-width: 479px) {    
     .editpin {
-	max-width:90%;
-}
+		max-width:90%;
+	}
 }

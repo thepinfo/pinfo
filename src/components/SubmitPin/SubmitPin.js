@@ -124,10 +124,18 @@ class SubmitPin extends React.Component {
   }
   
   onGlowChange = (event) => {
-    this.setState({glow: event.target.value})
+  	if(this.state.glow == 'on'){
+  		this.setState({glow: 'off'})
+  	}else{
+  		this.setState({glow: 'on'})
+  	}  
+    
     var glowbox = document.getElementById("glow");
   	var glowimg = document.getElementById("glowimg");    
 	glowimg.style.display = glowimg.style.display === 'none' ? '' : 'none';
+	//console.log('event',event.target.value)
+	//console.log('glow',this.state.glow)
+	//console.log('glow state',this.state)
   }
 
   onUvChange = (event) => {
@@ -648,10 +656,37 @@ onSubmitClick = () => {
 		        				<input type='text' id='about' onChange={this.onAboutChange} className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100' />
 		        			  </div>
 		        			  <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
-				                Day: <input onChange={this.onDayChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="day"  id="day" placeholder="Day?"/>
-				                Month: <input onChange={this.onMonthChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="month"  id="month" placeholder="Month?"/>				                
-				                Year: <input onChange={this.onYearChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="year"  id="year" placeholder="Year?"/>
+		        			  	<table>
+			        			  	<tbody>
+				        			  	<tr>
+				        			  		<td colspan='3'>
+						                		<label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
+						                	</td>
+					                	</tr>
+					                	<tr>
+					                		<td>
+					                			Day
+					                		</td>				                		
+					                		<td>
+					                			Month
+					                		</td>
+					                		<td>
+					                			Year
+					                		</td>
+				                		</tr>
+				                		<tr>
+					                		<td>
+					                			<input onChange={this.onDayChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="day"  id="day" placeholder="Day?"/>
+					                		</td>				                		
+					                		<td>
+					                			<input onChange={this.onMonthChange} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="month"  id="month" placeholder="Month?"/>
+					                		</td>
+					                		<td>
+					                			<input onChange={this.onYearChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="year"  id="year" placeholder="Year?"/>
+					                		</td>
+				                		</tr>		
+				                 	</tbody>
+			                 	</table>				                
 				              </div>
 				              <div className="mt3 center">
 				              	<table className='center pintable'>
@@ -977,10 +1012,37 @@ onSubmitClick = () => {
 		        				<input type='text' id='about' onChange={this.onAboutChange} value={this.state.about} className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100' />
 		        			  </div>
 		        			  <div className="mt3">
-				                <label className="db fw6 lh-copy f6" htmlFor="year">Year</label>
-				                Day: <input onChange={this.onDayChange} value={this.state.day} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="day"  id="day" placeholder="Day?"/>
-				                Month: <input onChange={this.onMonthChange} value={this.state.month} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="month"  id="month" placeholder="Month?"/>				                
-				                Year: <input onChange={this.onYearChange} value={this.state.year} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-20" type="text" name="year"  id="year" placeholder="Year?"/>
+				                <table>
+			        			  	<tbody>
+				        			  	<tr>
+				        			  		<td colspan='3'>
+						                		<label className="db fw6 lh-copy f6" htmlFor="year">Release Date</label>
+						                	</td>
+					                	</tr>
+					                	<tr>
+					                		<td>
+					                			Day
+					                		</td>				                		
+					                		<td>
+					                			Month
+					                		</td>
+					                		<td>
+					                			Year
+					                		</td>
+				                		</tr>
+				                		<tr>
+					                		<td>
+					                			<input onChange={this.onDayChange} value={this.state.day} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="day"  id="day" placeholder="Day?"/>
+					                		</td>				                		
+					                		<td>
+					                			<input onChange={this.onMonthChange} value={this.state.month} className="mr1 pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="month"  id="month" placeholder="Month?"/>
+					                		</td>
+					                		<td>
+					                			<input onChange={this.onYearChange} value={this.state.year} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="year"  id="year" placeholder="Year?"/>
+					                		</td>
+				                		</tr>		
+				                 	</tbody>
+				                 	</table>
 				              </div>
 				              <div className="mt3 center">
 				              	<table className='center pintable'>

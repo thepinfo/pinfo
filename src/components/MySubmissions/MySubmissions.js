@@ -144,7 +144,7 @@ delClick = (e, row) => {
 }
 
 editClick = (e, row) => {
-   // this.props.setEdit(row);
+   this.props.setEdit(row);
    alert('Work in progress')    
     e.stopPropagation();
 }  

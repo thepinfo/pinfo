@@ -14,7 +14,7 @@ class TodoItems extends Component {
     }*/
   componentWillMount = () => {
     var listEntries = this.props.entries;
-    console.log("list entries",listEntries);
+    //console.log("list entries",listEntries);
     listItems = listEntries.map(this.createTasks);
   }
 

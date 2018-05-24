@@ -88,7 +88,8 @@ const initialState = {
         email: '',
         entries: 0,
         joined: ''
-      }
+      },
+      goToArtist:''
 
 } 
 
@@ -183,6 +184,7 @@ class App extends Component {
   }
 
   setEdit = (row) => {
+    //console.log('row',row)
     this.setState({edit: {
         name: row.name,
         artist: row.artist,
@@ -201,7 +203,7 @@ class App extends Component {
         damaged: row.damaged,
         categories: row.categories,
         about: row.about,
-        userid: row.id,
+        userid: row.userid,
         imgname: row.imgname,
         backimgname: row.backname,
         glowimgname: row.glowname,
@@ -215,13 +217,32 @@ class App extends Component {
         glowURL: glowURL,
         uvURL: uvURL,*/
         submitted: row.now,
+        pinid: row.id
     }})
      setTimeout(function() { 
-      console.log('edit state', this.state.edit) 
-      console.log('app state', this.state) 
+      //console.log('edit state', this.state.edit) 
+      //console.log('app state', this.state) 
       this.onRouteChange('editpin')
        }.bind(this), 500);
     
+  }
+
+  goToArtist = (e, row) => {
+    setTimeout(function() { 
+        this.setState({
+        goToArtist: row.artist
+      })
+      //console.log('goToArtist',this.state)
+      this.onRouteChange('singleartist')
+       }.bind(this), 500);
+
+    
+  }
+
+  clearGoTo = () => {
+    this.setState({
+      goToArtist: ''
+    })
   }
 
 
@@ -356,12 +377,11 @@ class App extends Component {
             )
         }
         {route==='search' 
-          ? <div className='contentdiv'>            
-              
-              
-                 <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />              
-              
+          ? this.state.user.id === 1
+            ?<div className='contentdiv'>   
+                 <Search user={this.state.user} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />     
             </div>
+            :<div>Work In Progress</div>
           : (
               route === 'home' 
               ? <div />
@@ -371,7 +391,8 @@ class App extends Component {
         {route==='singlepin' 
           ? <div className='contentdiv center'>
               <SinglePin
-                pin={this.state.singlePinId}
+                pin={this.state.singlePinId}                
+                goToArtist={this.goToArtist}
                 route={this.state.route}
                 onRouteChange={this.onRouteChange}
               />
@@ -391,6 +412,7 @@ class App extends Component {
         {route==='editpin' 
           ? <div className='contentdiv center'>
               <EditPin
+                user={this.state.user}
                 pin={this.state.edit}
                 route={this.state.route}
                 onRouteChange={this.onRouteChange}
@@ -432,6 +454,8 @@ class App extends Component {
           ? <div className='contentdiv center'>
               <SingleArtist
                 artist={this.state.singleArtist}
+                goToState={this.state.goToArtist}
+                clearGoTo={this.clearGoTo}
                 loadPin={this.loadPin}
                 onRouteChange={this.onRouteChange}
               />

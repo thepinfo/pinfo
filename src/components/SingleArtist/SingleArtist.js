@@ -3,6 +3,7 @@ import './SingleArtist.css';
 //var rows = {};
 var rows = [];
 var back = 0;
+let artist = '';
 
 var isMobile = {
     Android: function() {
@@ -52,11 +53,16 @@ class SingleArtist extends React.Component {
       }
 
   componentWillMount = (props) => {
+    if(this.props.goToState != ''){
+      artist = this.props.goToState
+    }else{
+      artist = this.props.artist
+    }
     fetch('http://104.236.62.203:3000/singleartist', {
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({
-        artist: this.props.artist
+        artist: artist
       })
     })
       .then(function(response) {
@@ -75,6 +81,7 @@ class SingleArtist extends React.Component {
         //console.log('rows 2',rows)
       });
 
+      this.props.clearGoTo();
       
       //this.setState = { loaded: 'on' };
   }
